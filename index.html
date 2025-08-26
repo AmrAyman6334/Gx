@@ -9,23 +9,24 @@
     :root {
       --primary: #f1c40f;
       --secondary: #3498db;
-      --dark: #1a1a2e;
-      --light: #f9f9f9;
+      --dark: #0d0d0d;
+      --light: #ffffff;
       --text-dark: #222;
-      --text-light: #f0f0f0;
+      --text-light: #f9f9f9;
     }
 
     body {
       margin: 0;
       font-family: 'Cairo','Segoe UI',sans-serif;
-      background: linear-gradient(-45deg,#1a1a2e,#181824,#202040,#1f1b2e);
+      background: linear-gradient(-45deg,#0d0d0d,#1a1a1a,#202020,#2c2c2c);
       background-size: 400% 400%;
       animation: gradientBG 20s ease infinite;
       color: var(--text-light);
       overflow-x: hidden;
+      transition: all 0.4s ease;
     }
     body.light {
-      background: linear-gradient(-45deg,#fff,#f5f5f5,#ebebeb,#dedede);
+      background: linear-gradient(-45deg,#fff,#f7f7f7,#f1f1f1,#eaeaea);
       color: var(--text-dark);
     }
     @keyframes gradientBG {
@@ -39,13 +40,13 @@
       padding: 2rem 1rem;
     }
     header img {
-      width: 120px; height: 120px;
+      width: 130px; height: 130px;
       border-radius: 50%;
       border: 3px solid var(--primary);
-      box-shadow: 0 0 20px rgba(241,196,15,0.7);
+      box-shadow: 0 0 25px rgba(241,196,15,0.8);
     }
-    header h1 {font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);}
-    header p {font-size: 1rem; margin: 0.3rem 0;}
+    header h1 {font-size: 2.7rem; margin: 0.5rem 0; color: var(--primary);}
+    header p {font-size: 1.1rem; margin: 0.3rem 0;}
 
     .top-controls {
       position: absolute;
@@ -53,12 +54,13 @@
       display: flex; gap: 0.5rem;
     }
     select {
-      padding: 0.4rem 0.7rem;
+      padding: 0.5rem 0.8rem;
       border-radius: 8px;
       border: none;
       background: rgba(255,255,255,0.15);
       color: white;
       cursor: pointer;
+      font-weight: bold;
     }
     body.light select {color: var(--text-dark); background: rgba(0,0,0,0.1);}
 
@@ -74,33 +76,39 @@
     }
     .card {
       padding: 1.5rem;
-      background: rgba(255,255,255,0.07);
-      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
       text-align: center;
       transition: 0.3s;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
     }
-    .card:hover {transform: translateY(-5px); background: rgba(255,255,255,0.15);}
+    .card:hover {transform: translateY(-6px); background: rgba(255,255,255,0.18);}
     .card h3 {margin: 0.5rem 0; color: var(--secondary);}
 
     .offers {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 1.5rem;
     }
     .offer {
       background: rgba(255,255,255,0.1);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1rem;
       text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-    .offer img {width: 100%; border-radius: 10px; margin-bottom: 0.5rem;}
+    .offer:hover {transform: translateY(-5px) scale(1.03);}
+    .offer img {width: 100%; border-radius: 12px; margin-bottom: 0.7rem;}
+    .offer h4 {margin: 0.3rem 0; color: var(--primary);}
+    .offer p {margin: 0.2rem 0;}
 
     footer {
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
       font-size: 0.9rem;
-      color: #aaa;
+      color: #bbb;
     }
     body.light footer {color: #444;}
   </style>
@@ -118,7 +126,7 @@
   </div>
 
   <header>
-    <img src="https://cdn.discordapp.com/attachments/1404908518171213865/1409829896661766267/Screenshot_20250826_122014.jpg?ex=68aecde8&is=68ad7c68&hm=d94ceb1d17a3b106bedf8c6f6b405ba0c39f5dc2286b9a34f7536a9c6927923d&" alt="شعار سنتر فون">
+    <img src="https://cdn.discordapp.com/attachments/1404908518171213865/1409829896661766267/Screenshot_20250826_122014.jpg" alt="شعار سنتر فون">
     <h1 id="title">📱 سنتر فون</h1>
     <p id="location">منفلوط - خلف مدرسة الرشاد</p>
   </header>
@@ -130,7 +138,7 @@
 
   <section class="section">
     <h2 id="offersTitle">عروض الهواتف</h2>
-    <div class="noki" id="sanmsong"></div>
+    <div class="offers" id="offers"></div>
   </section>
 
   <footer id="footer"></footer>
@@ -150,9 +158,10 @@
           ["♻️ شراء", "نشتري الهواتف المستعملة بأفضل سعر."]
         ],
         offers: [
-          {name: "iPhone 13 Pro", price: "25,000 EGP", img: "https://via.placeholder.com/200x150"},
-          {name: "Samsung S23", price: "22,000 EGP", img: "https://via.placeholder.com/200x150"},
-          {name: "Xiaomi Note 12", price: "9,000 EGP", img: "https://via.placeholder.com/200x150"}
+          {name: "iPhone 15 Pro Max", price: "45,000 EGP", desc:"أحدث إصدار بأداء خرافي وكاميرا احترافية.", img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch_AV1?wid=5120&hei=2880&fmt=p-jpg&qlt=80"},
+          {name: "Samsung Galaxy S24 Ultra", price: "42,000 EGP", desc:"شاشة مذهلة بدقة عالية وقلم S-Pen.", img: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-ultra-sm-s928-481540-sm-s928bzvfmea-thumb-539782185"},
+          {name: "Xiaomi 14 Pro", price: "28,000 EGP", desc:"أداء قوي بفضل معالج Snapdragon الجديد.", img: "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14-pro-1.jpg"},
+          {name: "Oppo Reno 11 Pro", price: "18,500 EGP", desc:"تصميم أنيق مع شحن سريع وبطارية قوية.", img: "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-reno11-pro-1.jpg"}
         ]
       },
       en: {
@@ -165,9 +174,10 @@
           ["♻️ Buy", "We buy used phones at the best rates."]
         ],
         offers: [
-          {name: "iPhone 13 Pro", price: "$800", img: "https://via.placeholder.com/200x150"},
-          {name: "Samsung S23", price: "$700", img: "https://via.placeholder.com/200x150"},
-          {name: "Xiaomi Note 12", price: "$300", img: "https://via.placeholder.com/200x150"}
+          {name: "iPhone 15 Pro Max", price: "$1200", desc:"Latest release with amazing performance and pro camera.", img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch_AV1?wid=5120&hei=2880&fmt=p-jpg&qlt=80"},
+          {name: "Samsung Galaxy S24 Ultra", price: "$1100", desc:"Brilliant display with high resolution and S-Pen.", img: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-ultra-sm-s928-481540-sm-s928bzvfmea-thumb-539782185"},
+          {name: "Xiaomi 14 Pro", price: "$750", desc:"Powerful Snapdragon performance.", img: "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14-pro-1.jpg"},
+          {name: "Oppo Reno 11 Pro", price: "$500", desc:"Elegant design with fast charging and strong battery.", img: "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-reno11-pro-1.jpg"}
         ]
       }
     };
@@ -187,7 +197,7 @@
       const offersContainer = document.getElementById("offers");
       offersContainer.innerHTML = "";
       t.offers.forEach(o => {
-        offersContainer.innerHTML += `<div class="offer"><img src="${o.img}"><h4>${o.name}</h4><p>${o.price}</p></div>`;
+        offersContainer.innerHTML += `<div class="offer"><img src="${o.img}"><h4>${o.name}</h4><p>${o.price}</p><small>${o.desc}</small></div>`;
       });
 
       document.querySelector("html").setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
