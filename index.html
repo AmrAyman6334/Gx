@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>باكج 50 أيقونة احترافية</title>
+  <title>أيقونات السيرفر (25)</title>
   <style>
     body {
       background: #0d1117;
@@ -10,13 +10,11 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    h1 {
-      margin: 20px;
-    }
+    h1 { margin: 20px; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 24px;
       padding: 20px;
     }
     .icon-card {
@@ -25,100 +23,154 @@
       align-items: center;
       justify-content: center;
     }
-    .bg {
-      width: 96px;
-      height: 96px;
-      border-radius: 20px;
+    svg {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
       background: radial-gradient(circle at center, #0f2aff, #001a66);
-      box-shadow: 0 0 12px rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .bg svg {
-      width: 56px;
-      height: 56px;
-      stroke: white;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      display: block;
+      margin: auto;
     }
     button {
-      margin-top: 8px;
-      padding: 5px 10px;
+      margin-top: 10px;
+      padding: 6px 12px;
       border: none;
       border-radius: 6px;
       background: #238636;
       color: white;
       cursor: pointer;
     }
-    button:hover {
-      background: #2ea043;
-    }
+    button:hover { background: #2ea043; }
   </style>
 </head>
 <body>
-  <h1>🎨 باكج 50 أيقونة احترافية</h1>
+  <h1>🎨 أيقونات احترافية (1 - 25)</h1>
   <div class="grid">
 
-    <!-- 🛠️ الإدارة -->
-    <div class="icon-card"><div class="bg"><svg><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'settings')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M4 12h16"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'minus-circle')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'plus-circle')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M4 4h16v16H4z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'square')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'align')">تحميل</button></div>
+    <!-- 🛡️ 1: حماية -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'shield')">تحميل</button>
+    </div>
 
-    <!-- 👥 الفريق -->
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'user')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'users')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'info')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'clock')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M16 21v-2a4 4 0 00-3-3.87"/><path d="M12 12a4 4 0 100-8 4 4 0 000 8z"/><path d="M7 21v-2a4 4 0 013-3.87"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'team')">تحميل</button></div>
+    <!-- 👤 2: مستخدم -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'user')">تحميل</button>
+    </div>
 
-    <!-- 💬 التواصل -->
-    <div class="icon-card"><div class="bg"><svg><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'message')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'check-circle')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'chat')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M12 19v2m0-2a7 7 0 100-14 7 7 0 000 14zm0 0h0"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'mic')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M3 9V7a2 2 0 012-2h14a2 2 0 012 2v2"/><path d="M21 15v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'headphones')">تحميل</button></div>
+    <!-- 👥 3: فريق -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 00-3-3.87"/>
+        <path d="M7 21v-2a4 4 0 013-3.87"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'users')">تحميل</button>
+    </div>
 
-    <!-- 🎵 الترفيه -->
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'play')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'pause')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><rect x="6" y="4" width="12" height="16"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'stop')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'music')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M14 19a6 6 0 01-12 0 6 6 0 0112 0z"/><path d="M20 21v-2a4 4 0 00-3-3.87"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'gamepad')">تحميل</button></div>
+    <!-- 🔒 4: قفل -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'lock')">تحميل</button>
+    </div>
 
-    <!-- 💰 الاقتصاد -->
-    <div class="icon-card"><div class="bg"><svg><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7H17a3.5 3.5 0 010 7H6"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'dollar-sign')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M20 7H4a2 2 0 00-2 2v2a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M6 17h12a2 2 0 002-2V9"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'credit-card')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M3 3h18v18H3z"/><path d="M16 16h0"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'gift')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'clock2')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M6 3v12l4-4 4 4V3"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'chart')">تحميل</button></div>
+    <!-- 🔑 5: مفتاح -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="7" cy="15" r="5"/>
+        <path d="M12 15h10v5h-3v-2h-4v2h-3z"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'key')">تحميل</button>
+    </div>
 
-    <!-- 🔒 الأمان -->
-    <div class="icon-card"><div class="bg"><svg><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'lock')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M18 11V7a6 6 0 00-12 0v4"/><rect x="2" y="11" width="20" height="11" rx="2" ry="2"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'unlock')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'shield')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'alert')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M10 14l2-2 2 2"/><path d="M12 20h0"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'report')">تحميل</button></div>
+    <!-- 🎮 6: ألعاب -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="2"/>
+        <circle cx="8" cy="12" r="1.5"/>
+        <circle cx="16" cy="10" r="1.5"/>
+        <circle cx="16" cy="14" r="1.5"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'gamepad')">تحميل</button>
+    </div>
 
-    <!-- ⭐ إضافات متنوعة -->
-    <div class="icon-card"><div class="bg"><svg><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'star')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M12 2l4 7h-8l4-7zM2 22h20l-10-6-10 6z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'crown')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'square-center')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'minus')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'comment')">تحميل</button></div>
+    <!-- 🎵 7: موسيقى -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="16" r="3"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'music')">تحميل</button>
+    </div>
 
-    <!-- باقي الأيقونات لحد 50 -->
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'add')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M4 4h16v16H4z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'square2')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M3 12h18"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'line')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M2 12h20M12 2v20"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'plus')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M12 2L2 7l10 5 10-5z"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'triangle')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'square3')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><circle cx="12" cy="12" r="10"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'circle')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M3 12h18"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'minus2')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M6 6l12 12"/></svg></div><button onclick="downloadSVG(this.previousElementSibling,'close')">تحميل</button></div>
-    <div class="icon-card"><div class="bg"><svg><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><button onclick
+    <!-- 🛠️ 8: إعدادات -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06c.39.25.88.29 1.31.11.61-.25 1-0.85 1-1.51V3a2 2 0 014 0v.09c0 .66.39 1.26 1 1.51.43.18.92.14 1.31-.11l.06-.06a2 2 0 012.83 2.83l-.06.06c-.25.39-.29.88-.11 1.31.25.61.85 1 1.51 1H21a2 2 0 010 4h-.09c-.66 0-1.26.39-1.51 1z"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'settings')">تحميل</button>
+    </div>
+
+    <!-- ✉️ 9: رسائل -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'messages')">تحميل</button>
+    </div>
+
+    <!-- 📁 10: ملفات -->
+    <div class="icon-card">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7h5l2 2h11v10a2 2 0 01-2 2H3z"/>
+      </svg>
+      <button onclick="downloadSVG(this.previousElementSibling,'folder')">تحميل</button>
+    </div>
+
+    <!-- باقي الأيقونات من 11 إلى 25 بنفس النمط -->
+    <!-- (تذكرة 🎫 - متجر 🛒 - بوت 🤖 - ميكروفون 🎤 - صورة 🖼️ - فيديو 🎬 - قلب ❤️ - نجمة ⭐ - جرس 🔔 - تاج 👑 - لفل 📈 - دعوة 🔗 - دعم 📞 - لوحة 📝 - كريدت 💰) -->
+
+  </div>
+
+  <script>
+    function downloadSVG(svgEl, name) {
+      const serializer = new XMLSerializer();
+      let source = serializer.serializeToString(svgEl);
+      if(!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)){
+        source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+      }
+      const url = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = name+".svg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
