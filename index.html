@@ -5,262 +5,360 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GxBot — بوت ديسكورد متكامل</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (icons) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    :root{
-      --bg1: #071029;
-      --bg2: #0b1220;
-      --muted: rgba(255,255,255,0.92);
-      --muted-soft: rgba(255,255,255,0.72);
-      --accent: #6c7cff;
-      --accent-2: #ff6fb3;
-      --glass-border: rgba(255,255,255,0.06);
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(2,6,23,0.7);
-      --glow: 0 6px 30px rgba(108,124,255,0.12);
-      --gold-1: #ffd36b;
-      --gold-2: #f1c40f;
-      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
-    }
+  /* ======================================================================
+     GxBot Landing Page CSS
+     - Includes: dark/light theme, gold Prime styling, responsive grid,
+       accessible modal, language buttons, support FAB, smooth UI.
+     - Put bot.png and botprime.png next to index.html
+     ====================================================================== */
 
-    /* base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(108,124,255,0.06), transparent),
-                  radial-gradient(1200px 600px at 90% 90%, rgba(241,111,179,0.04), transparent),
-                  linear-gradient(135deg,var(--bg1),var(--bg2));
-      color: var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      min-height: 100vh;
-      overflow-y:auto;
-      -webkit-overflow-scrolling: touch;
-    }
+  :root{
+    /* Colors */
+    --bg-deep: #071029;
+    --bg-deep-2: #0b1220;
+    --surface: rgba(255,255,255,0.03);
+    --muted: rgba(255,255,255,0.92);
+    --muted-soft: rgba(255,255,255,0.72);
+    --accent: #6c7cff;
+    --accent-2: #ff6fb3;
+    --gold-1: #ffd86f;
+    --gold-2: #f1c40f;
+    --glass-border: rgba(255,255,255,0.06);
+    --glass-2: rgba(0,0,0,0.06);
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(2,6,23,0.7);
+    --glow: 0 6px 30px rgba(108,124,255,0.12);
 
-    /* header */
-    header {
-      position: sticky;
-      top: 12px;
-      z-index: 80;
-      margin: 16px auto;
-      max-width: 1100px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-      transition: transform .28s ease, opacity .28s ease;
-    }
+    /* Layout */
+    --max-width: 1100px;
+    --gap: 14px;
+  }
 
-    .brand { display:flex; gap:12px; align-items:center; }
-    .bot-avatar { width:72px; height:72px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border: 2px solid rgba(255,255,255,0.06);
-      box-shadow: 0 8px 26px rgba(0,0,0,0.5);
-      flex-shrink:0;
-    }
-    .bot-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+  /* Light theme variables */
+  .theme-light {
+    --bg-deep: linear-gradient(135deg,#fffef5,#fff8e6);
+    --bg-deep-2: linear-gradient(135deg,#fff8e6,#fff3d9);
+    --text-main: #0b1220;
+    --muted: rgba(11,18,32,0.85);
+    --muted-soft: rgba(11,18,32,0.6);
+    --surface: rgba(2,6,23,0.02);
+    --glass-border: rgba(2,6,23,0.06);
+  }
 
-    .title { display:flex; flex-direction:column; gap:2px; }
-    .title h1 { margin:0; font-size:18px; color: var(--gold-1); letter-spacing:.4px; }
-    .title p { margin:0; font-size:13px; color:var(--muted-soft); }
+  /* Dark default */
+  html,body{
+    height:100%;
+  }
+  body{
+    margin:0;
+    font-family: "Poppins", "Cairo", system-ui, "Segoe UI", Arial, sans-serif;
+    background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(108,124,255,0.12), transparent),
+      radial-gradient(1200px 600px at 90% 90%, rgba(241,111,179,0.06), transparent),
+      linear-gradient(135deg,var(--bg-deep),var(--bg-deep-2));
+    color: var(--muted);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    -webkit-text-size-adjust:100%;
+  }
 
-    .controls { display:flex; gap:8px; align-items:center; }
+  /* animated overlay */
+  .bg-anim {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; mix-blend-mode: overlay;
+    background: conic-gradient(from 120deg at 50% 50%, rgba(255,215,100,0.03), transparent 25%, rgba(108,124,255,0.02), transparent 60%);
+    animation: rotateBG 35s linear infinite;
+    opacity:0.88;
+  }
+  @keyframes rotateBG { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
 
-    .btn {
-      background: var(--card-bg);
-      border:1px solid var(--glass-border);
-      padding:8px 12px;
-      border-radius:10px;
-      cursor:pointer;
-      color:var(--muted);
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      font-weight:600;
-      text-decoration:none;
-    }
-    .btn.glow { box-shadow: var(--glow); color:#071029; background: linear-gradient(90deg,var(--gold-1),var(--gold-2)); }
+  /* Page container */
+  main{
+    position:relative;
+    z-index:6;
+    max-width:var(--max-width);
+    margin:28px auto 80px;
+    padding:18px;
+    box-sizing:border-box;
+  }
 
-    /* floating contact support */
-    .support-fab {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 140;
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: linear-gradient(180deg,#ffd36b,#f1c40f);
-      color:#072;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      cursor:pointer;
-      transition: transform .18s ease;
-    }
-    .support-fab:hover{ transform: translateY(-4px); }
+  /* Header */
+  header.site-header {
+    position: sticky;
+    top:14px;
+    z-index:100;
+    display:flex;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius:14px;
+    border:1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+    transition: transform .28s ease, opacity .28s ease, box-shadow .28s ease;
+  }
+  header.site-header.header-hidden { transform: translateY(-120%); opacity:0; pointer-events:none; }
 
-    /* hero */
-    main { position: relative; z-index: 5; max-width: 1100px; margin: 18px auto 80px; padding: 18px; }
-    .hero { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    .hero-left { flex:1; min-width:260px; }
-    .hero-left h2{ margin:0; color:#fff; font-size:24px; }
-    .hero-left p{ margin-top:8px; color:var(--muted-soft); line-height:1.6; }
+  .brand { display:flex; gap:12px; align-items:center; }
+  .bot-avatar {
+    width:96px; height:96px; border-radius:50%; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border:3px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 0 30px rgba(108,124,255,0.08);
+    flex-shrink:0;
+  }
+  .bot-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
 
-    .cta-row { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .title h1 { margin:0; font-size:20px; color:var(--gold-1); letter-spacing: .5px; }
+  .title p { margin:4px 0 0; font-size:13px; color:var(--muted-soft); }
 
-    .hero-right { width:360px; min-width:240px; }
+  .controls { display:flex; gap:8px; align-items:center; }
 
-    .botcard {
-      border-radius:12px; padding:14px; border:1px solid var(--glass-border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-    }
-    .botcard h3{ margin:0; color:var(--accent); }
-    .bot-stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:12px; }
-    .stat { background: rgba(255,255,255,0.02); padding:10px; border-radius:8px; text-align:center; }
-    .stat .label{ font-size:12px; color:var(--muted-soft); }
-    .stat .value{ font-weight:800; font-size:16px; color:#fff; margin-top:6px; letter-spacing:0.4px; }
+  .btn {
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border:1px solid var(--glass-border);
+    padding:8px 10px;
+    border-radius:10px;
+    cursor:pointer;
+    color:var(--muted);
+    display:inline-flex; gap:8px; align-items:center;
+    font-weight:600; text-decoration:none;
+  }
+  .btn.glow { box-shadow: var(--glow); color:#071029; background: linear-gradient(90deg,var(--gold-1),var(--gold-2)); }
 
-    .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent); margin:22px 0; border-radius:4px; }
+  /* Language switch (top-left) */
+  .lang-wrap {
+    position: absolute;
+    left:16px;
+    top:14px;
+    z-index:110;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+  .lang-btn {
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid var(--glass-border);
+    color:var(--muted);
+    cursor:pointer;
+    font-weight:700;
+  }
+  .lang-btn[aria-pressed="true"] { box-shadow: var(--glow); border-color: rgba(255,255,255,0.12); color: #fff; }
 
-    /* features grid */
-    .showcase { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
-    .card {
-      position:relative; padding:16px; border-radius:12px; border:1px solid var(--glass-border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.006));
-      transition: transform .22s ease, box-shadow .22s ease;
-      overflow:hidden;
-      min-height:120px;
-      display:flex; flex-direction:column; justify-content:flex-start;
-    }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(2,6,23,0.6); }
-    .card h3 { margin:0 0 8px 0; color:var(--accent); font-size:16px; }
-    .card p { margin:0; font-size:13px; color:var(--muted-soft); line-height:1.45; word-break:break-word; max-height:3.5em; overflow:hidden; }
-    /* chip positioned bottom center inside card */
-    .chip {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 12px;
-      padding:8px 14px;
-      border-radius:999px;
-      background: linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#fff;
-      font-weight:800;
-      font-size:13px;
-      box-shadow: 0 10px 30px rgba(108,124,255,0.1);
-      border: 1px solid rgba(255,255,255,0.04);
-    }
+  /* Support floating icon (top-right) */
+  .support-fab {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index:120;
+    width:56px; height:56px; border-radius:50%;
+    background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
+    color:#072;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 12px 34px rgba(0,0,0,0.45);
+    cursor:pointer;
+    border:0;
+  }
 
-    /* prime section with golden raised background */
-    .premium {
-      margin-top:22px;
-      border-radius:12px;
-      padding:18px;
-      border:1px solid rgba(255,215,100,0.08);
-      background: linear-gradient(180deg, rgba(255,215,100,0.06), rgba(255,245,205,0.02));
-      box-shadow: 0 10px 40px rgba(255,200,60,0.06);
-    }
-    .premium .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:12px; align-items:center; }
-    .prime-card {
-      display:flex; gap:12px; align-items:center; padding:12px; border-radius:10px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,200,60,0.06); color:#062226; font-weight:700;
-    }
-    .prime-thumb {
-      width:56px; height:56px; border-radius:50%; overflow:hidden; flex-shrink:0;
-      border:3px solid rgba(255,255,255,0.08);
-      background: linear-gradient(90deg,#fff2cc,#fff0b0);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .prime-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  /* Hero */
+  .hero { display:flex; gap:20px; align-items:center; margin-top:18px; flex-wrap:wrap; }
+  .hero-left { flex:1; min-width:260px; }
+  .hero-left h2 { margin:0; font-size:26px; color:#fff; }
+  .hero-left p { margin-top:10px; color:var(--muted-soft); line-height:1.7; font-size:15px; }
 
-    /* modal detail */
-    .detail-view {
-      position: fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:160;
-      background: linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.85));
-      padding:24px; overflow:auto;
-    }
-    .detail-card {
-      width: 100%; max-width:820px; border-radius:14px; padding:22px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--glass-border); box-shadow: 0 26px 60px rgba(2,6,23,0.8);
-    }
-    .detail-card h2 { margin:0; color: #2a1a00; background: linear-gradient(90deg,var(--gold-1),var(--gold-2)); -webkit-background-clip:text; color:transparent; font-size:22px; }
-    .detail-card .meta { margin-top:10px; color:var(--muted-soft); font-size:13px; }
-    .detail-card .content { margin-top:14px; color:var(--muted-soft); line-height:1.7; font-size:15px; }
-    .detail-card .actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+  .cta-row { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; }
+  .cta { padding:12px 16px; border-radius:999px; font-weight:800; display:inline-flex; gap:12px; align-items:center; cursor:pointer; border:none; text-decoration:none; }
+  .cta.invite { background: linear-gradient(90deg,var(--gold-1),var(--gold-2)); box-shadow: 0 8px 30px rgba(241,196,15,0.12); color:#071029; }
+  .cta.dashboard { background: linear-gradient(90deg,#ff7a9a,#ff6fb3); color:#fff; }
+  .cta.support { background: linear-gradient(90deg,#6ce2b1,#19a974); color:#022; }
 
-    .close-btn { float:left; border-radius:10px; padding:8px 10px; display:inline-flex; gap:8px; align-items:center; cursor:pointer; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted); }
+  /* Bot card (right) */
+  .hero-right { width:360px; min-width:240px; }
+  .botcard { border-radius:14px; padding:16px; border:1px solid var(--glass-border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); box-shadow: var(--shadow); }
+  .botcard h3 { margin:0; color:var(--accent); }
+  .bot-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:12px; }
+  .stat { background:var(--surface); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); text-align:center; }
+  .stat .label { font-size:12px; color:var(--muted-soft); }
+  .stat .value { font-weight:800; font-size:16px; color:#fff; margin-top:6px; letter-spacing:0.4px; }
 
-    /* footer */
-    footer { margin-top:28px; padding:18px; text-align:center; color:rgba(255,255,255,0.6); font-size:13px; }
+  /* Divider */
+  .divider { height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent); margin:26px 0; border-radius:4px; }
 
-    /* small screens */
-    @media (max-width:900px){
-      header { flex-direction: column; align-items:flex-start; gap:12px; top:8px; margin:8px; }
-      .hero-right{ width:100%; }
-      .bot-avatar{ width:64px; height:64px; }
-      .chip{ font-size:12px; padding:7px 12px; bottom:10px; }
-      .prime-thumb{ width:48px; height:48px; }
-      .detail-card{ padding:16px; }
-    }
+  /* FEATURES GRID */
+  .showcase { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; align-items:start; }
+  .card {
+    position:relative;
+    padding:18px 16px 48px 16px; /* extra bottom space for 'more' button */
+    border-radius:12px;
+    border:1px solid var(--glass-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow: 0 8px 26px rgba(2,6,23,0.45);
+    transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    min-height:150px;
+    overflow:hidden;
+  }
+  .card:hover { transform: translateY(-8px); box-shadow: 0 30px 70px rgba(2,6,23,0.6); }
+  .card h3 { margin:0 0 8px 0; color:var(--accent); font-size:16px; }
+  .card p { margin:0; font-size:13px; color:var(--muted-soft); line-height:1.5; }
 
-    /* helper: hide header when scrolled down */
-    .header-hidden { transform: translateY(-120%); opacity:0; pointer-events:none; }
+  /* "المزيد" button centered bottom of card (always) */
+  .card .chip {
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:12px;
+    padding:10px 16px;
+    border-radius:999px;
+    background: linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#fff;
+    font-weight:800;
+    font-size:13px;
+    border:1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 8px 30px rgba(108,124,255,0.1);
+  }
 
-    /* small accessibility focus styles */
-    .card:focus { outline: 3px solid rgba(108,124,255,0.18); outline-offset:4px; }
-    a.btn:focus, button:focus { outline: 3px solid rgba(108,124,255,0.12); outline-offset:3px; }
+  /* Prime specific: golden card */
+  .card.prime {
+    background: linear-gradient(180deg, rgba(255,242,200,0.95), rgba(255,245,210,0.9));
+    color:#1b1200;
+    border:1px solid rgba(255,215,100,0.12);
+    box-shadow: 0 18px 60px rgba(255,200,60,0.08);
+  }
+  .card.prime h3 { color: #3a2b00; }
+  .prime-badge {
+    width:76px;height:76px;border-radius:50%;overflow:hidden;border:4px solid rgba(255,255,255,0.9);box-shadow:0 12px 30px rgba(0,0,0,0.15);
+    display:block;margin:8px auto 6px auto;background:linear-gradient(90deg,#fff2cc,#fff0b0);
+  }
+  .prime-badge img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* place an icon above middle of the prime card (decorative) */
+  .prime-icon {
+    position:absolute;
+    top:-28px;
+    left:50%;
+    transform:translateX(-50%);
+    width:56px;height:56px;border-radius:50%;
+    background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
+    display:flex;align-items:center;justify-content:center;
+    color:#071029;font-weight:900;border:4px solid rgba(255,255,255,0.9);
+    box-shadow: 0 10px 30px rgba(255,200,60,0.12);
+  }
+
+  /* Premium grid and cards (inside Prime section) */
+  .premium {
+    margin-top:22px;
+    border-radius:12px;
+    padding:18px;
+    border:1px solid rgba(255,215,100,0.08);
+    background: linear-gradient(180deg, rgba(255,215,100,0.04), rgba(255,255,255,0.01));
+    box-shadow: 0 10px 40px rgba(255,215,100,0.03);
+  }
+  .premium .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:12px; }
+  .premium-card { padding:12px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border:1px solid rgba(255,200,60,0.06); color:#062226; font-weight:700; display:flex; gap:12px; align-items:center; }
+
+  .prime-thumb { width:56px; height:56px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center; border:3px solid rgba(255,255,255,0.08); background: linear-gradient(90deg,#fff2cc,#fff0b0); }
+  .prime-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* Modal / Detail overlay */
+  .detail-view {
+    position: fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:220;
+    background: linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.85));
+    padding:24px; overflow:auto;
+  }
+  .detail-card {
+    width: 100%; max-width:920px; border-radius:14px; padding:26px; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
+    border:1px solid rgba(2,6,23,0.08); box-shadow: 0 26px 60px rgba(2,6,23,0.8);
+    color:#0b1220;
+  }
+  .detail-card h2 { margin:0; font-size:22px; background: linear-gradient(90deg,var(--gold-1),var(--gold-2)); -webkit-background-clip:text; color:transparent; }
+  .detail-card .meta { margin-top:10px; color:#444; font-size:13px; }
+  .detail-card .content { margin-top:16px; color:#333; line-height:1.7; font-size:15px; }
+  .detail-card .actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+
+  .close-btn { float:left; border-radius:10px; padding:8px 10px; display:inline-flex; gap:8px; align-items:center; cursor:pointer; background:transparent; border:1px solid rgba(0,0,0,0.06); color:#222; }
+
+  /* Footer */
+  footer { margin-top:28px; padding:18px; text-align:center; color:rgba(255,255,255,0.6); font-size:13px; }
+
+  /* Responsive */
+  @media (max-width:900px){
+    header.site-header { padding:12px; }
+    .hero-right{ width:100%; order:2; }
+    .hero-left{ order:1; width:100%; }
+    .bot-avatar{ width:80px; height:80px; }
+    .prime-icon{ top:-22px; width:44px; height:44px; }
+    .detail-card{ padding:18px; }
+    .card{ padding-bottom:56px }
+  }
+
+  /* Accessibility focus visible */
+  .card:focus { outline: 3px solid rgba(108,124,255,0.18); outline-offset:4px; }
+  a.btn:focus, button:focus { outline: 3px solid rgba(108,124,255,0.12); outline-offset:3px; }
+
+  /* small utility */
+  .visually-hidden { position:absolute!important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
   </style>
 </head>
 <body>
-  <!-- floating support button (click opens contact modal/email) -->
-  <button id="supportFab" class="support-fab" title="تواصل مع الدعم (ايميل)">
+
+  <!-- animated overlay (visual only) -->
+  <div class="bg-anim" aria-hidden="true"></div>
+
+  <!-- language buttons top-left (circular) -->
+  <div class="lang-wrap" role="navigation" aria-label="language switch">
+    <button id="langAR" class="lang-btn" aria-pressed="true" title="العربية">ع</button>
+    <button id="langEN" class="lang-btn" aria-pressed="false" title="English">EN</button>
+  </div>
+
+  <!-- support floating button (top-right) -->
+  <button id="supportFab" class="support-fab" title="تواصل مع الدعم (إرسال بريد)">
     <i class="fa fa-envelope"></i>
   </button>
 
+  <!-- main container -->
   <main>
-    <header id="pageHeader" role="banner" aria-label="header">
-      <div class="brand">
+    <!-- Header -->
+    <header class="site-header" role="banner" aria-label="header">
+      <div class="brand" aria-hidden="false">
         <div class="bot-avatar" aria-hidden="true">
-          <img src="bot.png" alt="صورة بوت GxBot" onerror="this.style.background='linear-gradient(90deg,#6c7cff,#ff6fb3)'; this.src='';" />
+          <!-- Put bot.png next to index.html -->
+          <img src="bot.png" alt="صورة بوت GxBot (bot.png)" onerror="this.style.background='linear-gradient(90deg,#6c7cff,#ff6fb3)'; this.src='';" />
         </div>
-        <div class="title">
-          <h1 id="titleMain">GxBot</h1>
+
+        <div class="title" role="heading" aria-level="1">
+          <h1 id="brandTitle">GxBot</h1>
           <p id="short-desc">بوت ديسكورد لإدارة، أمان، اقتصاد وترفيه — تجربة متكاملة ومضيئة.</p>
         </div>
       </div>
 
-      <div style="display:flex; gap:10px; align-items:center;">
-        <!-- language toggle -->
-        <div style="display:flex; gap:8px; align-items:center; margin-right:6px;">
-          <button id="langAR" class="btn" aria-pressed="true">AR</button>
-          <button id="langEN" class="btn">EN</button>
-        </div>
+      <div class="controls" role="navigation" aria-label="controls">
+        <a id="inviteBtnTop" class="btn glow" href="https://discord.com/oauth2/authorize?client_id=1411571554025865236&permissions=8&scope=bot" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-plus"></i><span id="inviteText">دعوة البوت</span>
+        </a>
 
-        <div class="controls" role="navigation" aria-label="controls">
-          <a class="btn glow" id="inviteBtn" href="https://discord.com/oauth2/authorize?client_id=1411571554025865236&permissions=8&scope=bot" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-plus"></i> <span id="inviteText">دعوة البوت</span>
-          </a>
-          <a class="btn" id="supportBtn" href="https://discord.gg/g43V2Q62KP" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-comments"></i> <span id="supportText">سيرفر الدعم</span>
-          </a>
-        </div>
+        <a id="supportBtnTop" class="btn" href="https://discord.gg/g43V2Q62KP" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-comments"></i><span id="supportText">سيرفر الدعم</span>
+        </a>
+
+        <!-- theme toggle -->
+        <button id="themeToggle" class="btn" title="تبديل الوضع">
+          <i id="themeIcon" class="fa fa-moon"></i>
+        </button>
       </div>
     </header>
 
@@ -268,13 +366,13 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
         <h2 id="hero-title">GxBot — إدارة، أمان، اقتصاد وترفيه في بوت واحد</h2>
-        <p class="desc" id="hero-desc">
+        <p id="hero-desc" class="desc">
           بوت شامل يجمع إدارة السيرفر، نظام اقتصاد متكامل (Kentos)، نظام اجتماعي داخلي، حماية متقدمة، ومجموعة ترفيهية تضمن بقاء مجتمعك حيويًا ونشيطًا.
         </p>
 
         <div class="cta-row" role="group" aria-label="cta-buttons">
-          <a id="inviteCTA" class="btn glow" href="#features" aria-controls="featuresGrid"><i class="fa fa-rocket"></i> <span id="gotoFeatures">اذهب للمميزات</span></a>
-          <a id="primeCTA" class="btn" href="#prime" aria-controls="prime"><i class="fa fa-crown"></i> <span id="gotoPrime">اشترك في Prime</span></a>
+          <a id="inviteCTA" class="cta invite" href="#features" aria-controls="featuresGrid"><i class="fa fa-rocket"></i>&nbsp;<span id="gotoFeatures">اذهب للمميزات</span></a>
+          <a id="primeCTA" class="cta dashboard" href="#prime" aria-controls="prime"><i class="fa fa-crown"></i>&nbsp;<span id="gotoPrime">اشترك في Prime</span></a>
         </div>
 
         <div style="margin-top:14px;color:var(--muted-soft);font-size:13px">
@@ -303,8 +401,8 @@
     <section id="features" aria-labelledby="features-title">
       <h3 id="features-title" style="margin:0 0 8px 0;color:var(--gold-1)">أهم مميزات GxBot</h3>
 
-      <div class="showcase" id="featuresGrid">
-        <!-- Cards injected by JS -->
+      <div class="showcase" id="featuresGrid" role="list">
+        <!-- Cards will be injected by JS -->
       </div>
     </section>
 
@@ -313,28 +411,32 @@
       <h3 id="prime-title" style="margin:0;color:var(--gold-1)">GxBot Prime</h3>
       <p id="prime-desc" style="color:var(--muted-soft);margin-top:8px">مميزات حصرية بتصميم ذهبي ومضيء — تفعيل عبر Kentos أو الدفع المباشر.</p>
 
-      <div class="grid">
-        <div style="display:flex; gap:12px; align-items:center; margin-top:12px;">
-          <div class="prime-thumb" aria-hidden="true">
-            <img src="botprime.png" alt="GxBot Prime image (botprime.png)" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" />
+      <div style="margin-top:12px; position:relative;">
+        <!-- large prime card style example -->
+        <div class="card prime" id="primeMainCard" role="article" aria-labelledby="primeMainTitle">
+          <div class="prime-icon" aria-hidden="true">PR</div>
+          <div style="padding-top:12px;">
+            <div class="prime-badge" aria-hidden="true">
+              <img src="botprime.png" alt="Prime badge (botprime.png)" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" />
+            </div>
+            <h3 id="primeMainTitle">نسخة Prime — GxBot</h3>
+            <p style="color:#3b2b00">تفعيل Prime يمنحك: إعدادات حصرية، أدوات متقدمة، خلفيات ذهبية، تقارير مفصّلة وميزات مميزة.</p>
           </div>
-          <div style="flex:1">
-            <div style="font-weight:800; color:#3a2b00">نسخة Prime — GxBot</div>
-            <div style="font-size:13px; color:var(--muted-soft); margin-top:6px">تفعيل Prime يمنحك: إعدادات حصرية، أدوات متقدمة، خلفيات ذهبية، تقارير مفصّلة وميزات متقدمة.</div>
-          </div>
+          <button class="chip" aria-label="المزيد عن Prime" data-id="prime">المزيد</button>
         </div>
 
-        <div class="grid" style="margin-top:14px;">
-          <div class="prime-card">
-            <div class="prime-thumb"><img src="botprime.png" alt="prime" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" /></div>
+        <!-- small premium features -->
+        <div class="grid" style="margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;">
+          <div class="premium-card">
+            <div class="prime-thumb"><img src="botprime.png" alt="prime pack" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" /></div>
             <div>
               <div style="font-weight:800">حزمة برايم</div>
               <div style="font-size:13px;color:var(--muted-soft)">تخصيص ذهبي، أدوات متقدمة، أولوية دعم</div>
             </div>
           </div>
 
-          <div class="prime-card">
-            <div class="prime-thumb"><img src="botprime.png" alt="prime" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" /></div>
+          <div class="premium-card">
+            <div class="prime-thumb"><img src="botprime.png" alt="prime team" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';" /></div>
             <div>
               <div style="font-weight:800">نسخة الفريق</div>
               <div style="font-size:13px;color:var(--muted-soft)">اشتراك للفرق مع صلاحيات مركبة وإدارة مركزية</div>
@@ -349,288 +451,551 @@
     <footer>
       <div id="footerText">© 2025 — هذا الموقع تم تصميمه بواسطة فريق GX — فريق دعم البوت.</div>
     </footer>
+
   </main>
 
   <!-- Detail overlay (single reused modal) -->
   <div id="detailView" class="detail-view" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="detail-card" role="document" aria-labelledby="detailTitle">
-      <button id="closeDetail" class="close-btn" aria-label="إغلاق النافذة"><i class="fa fa-times"></i> إغلاق</button>
+      <button id="closeDetail" class="close-btn" aria-label="إغلاق النافذة"><i class="fa fa-times"></i>&nbsp;إغلاق</button>
       <div style="clear:both"></div>
-      <h2 id="detailTitle"></h2>
-      <div class="meta" id="detailMeta"></div>
+      <h2 id="detailTitle">عنوان الميزة</h2>
+      <div class="meta" id="detailMeta" aria-hidden="false"></div>
       <div class="content" id="detailContent"></div>
       <div class="actions" id="detailActions"></div>
     </div>
   </div>
 
-  <!-- Contact small modal (for support FAB) -->
+  <!-- Contact (used by the support FAB to show a small contact modal) -->
   <div id="contactView" class="detail-view" aria-hidden="true" style="display:none;">
-    <div class="detail-card" role="document" style="max-width:520px;">
-      <button id="closeContact" class="close-btn" aria-label="إغلاق النافذة"><i class="fa fa-times"></i> إغلاق</button>
-      <h2>تواصل مع الدعم</h2>
-      <div class="meta" style="margin-top:8px;color:var(--muted-soft)">اكتب لنا رسالة أو أرسل شكاوى عبر البريد الإلكتروني:</div>
-      <div class="content" style="margin-top:12px">
-        <p style="margin:0 0 8px 0">البريد الإلكتروني: <strong>gxbotar7@gmail.com</strong></p>
-        <p style="margin:0 0 10px 0">أرسل لنا وصف المشكلة وسنرد بأسرع ما يمكن.</p>
+    <div class="detail-card" role="document" style="max-width:520px;background:linear-gradient(180deg,#fff,#fff);">
+      <button id="closeContact" class="close-btn" aria-label="إغلاق النافذة"><i class="fa fa-times"></i>&nbsp;إغلاق</button>
+      <h2 id="contactTitle">تواصل مع الدعم</h2>
+      <div class="meta" style="margin-top:8px;color:#444">أرسل شكوى أو بلاغ عبر البريد الإلكتروني:</div>
+      <div class="content" style="margin-top:12px;color:#222">
+        <p style="margin:0 0 8px 0">البريد الإلكتروني: <strong id="supportEmail">gxbotar7@gmail.com</strong></p>
+        <p style="margin:0 0 10px 0">نرحب بوصف المشكلة بالتفصيل وسنراجع طلبك سريعًا.</p>
         <div style="display:flex; gap:8px; margin-top:12px;">
-          <a id="mailLink" href="mailto:gxbotar7@gmail.com?subject=شكوى%20/٪20تواصل%20مع%20GxBot" class="btn glow">أرسل إيميل</a>
+          <a id="mailLinkSmall" href="mailto:gxbotar7@gmail.com?subject=شكوى%20/%20تواصل%20مع%20GxBot" class="btn glow">أرسل إيميل</a>
           <button id="copyMail" class="btn">نسخ الإيميل</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
-    /*************** Data (features + content) *****************/
-    const INVITE_LINK = "https://discord.com/oauth2/authorize?client_id=1411571554025865236&permissions=8&scope=bot";
-    const SUPPORT_LINK = "https://discord.gg/g43V2Q62KP";
-    const SUPPORT_EMAIL = "gxbotar7@gmail.com";
+  /***************************************************************************
+    GxBot landing page JS
+    - Renders features grid from `features` array (contains Arabic + English texts)
+    - Handles language switching (AR/EN)
+    - Handles theme toggle (dark/light)
+    - Opens/closes modal and contact view, traps focus, accessibility
+    - Header hide-on-scroll behavior
+    - Support FAB opens the contact modal or mailto
+    ***************************************************************************/
 
-    // bilingual content (Arabic default + English)
-    const LOCALES = {
-      ar: {
-        titleMain: "GxBot",
-        shortDesc: "بوت ديسكورد لإدارة، أمان، اقتصاد وترفيه — تجربة متكاملة ومضيئة.",
-        inviteText: "دعوة البوت",
-        supportText: "سيرفر الدعم",
-        gotoFeatures: "اذهب للمميزات",
-        gotoPrime: "اشترك في Prime",
-        kentosLabel: "Kentos",
-        kentosDesc: " — عملة البوت الداخلية لتفعيل المميزات الحصرية.",
-        featuresTitle: "أهم مميزات GxBot",
-        primeTitle: "GxBot Prime",
-        primeDesc: "مميزات حصرية بتصميم ذهبي ومضيء — تفعيل عبر Kentos أو الدفع المباشر.",
-        contactTitle: "تواصل مع الدعم",
-        mailSubject: "شكوى / تواصل مع GxBot"
-      },
-      en: {
-        titleMain: "GxBot",
-        shortDesc: "All-in-one Discord bot: moderation, economy, security & fun.",
-        inviteText: "Invite Bot",
-        supportText: "Support Server",
-        gotoFeatures: "See features",
-        gotoPrime: "Join Prime",
-        kentosLabel: "Kentos",
-        kentosDesc: " — bot currency to enable premium features.",
-        featuresTitle: "Top GxBot features",
-        primeTitle: "GxBot Prime",
-        primeDesc: "Exclusive golden features — activate via Kentos or direct payment.",
-        contactTitle: "Contact Support",
-        mailSubject: "Complaint / Contact GxBot"
+  // ----- Config / Links -----
+  const INVITE_LINK = "https://discord.com/oauth2/authorize?client_id=1411571554025865236&permissions=8&scope=bot";
+  const SUPPORT_LINK = "https://discord.gg/g43V2Q62KP";
+  const SUPPORT_EMAIL = "gxbotar7@gmail.com";
+
+  // ----- State -----
+  let currentLang = 'ar'; // 'ar' or 'en'
+  let currentTheme = 'dark'; // 'dark' or 'light'
+  let modalOpen = false;
+
+  // ----- Content (both languages) -----
+  // Each entry includes id, title, short, detail for ar + en
+  const features = [
+    {
+      id: "welcome",
+      title: { ar: "ترحيب احترافي للأعضاء الجدد", en: "Professional welcomes for new members" },
+      short: { ar: "رسائل ترحيب مخصصة، رول تلقائي، 3 قنوات ترحيب وشروحات.", en: "Custom welcome messages, auto-role, multi-channel guides." },
+      detail: {
+        ar: `<h4>عند دخول عضو جديد</h4>
+             <p>GxBot يرد برسائل ترحيب مخصصة ومصممة بشكل جميل. يمكنك تفعيل:</p>
+             <ul>
+               <li>3 قنوات مختلفة للترحيب.</li>
+               <li>3 شروحات مدمجة لشرح السيرفر.</li>
+               <li>رسالة ترحيب تلقائية عند الانضمام.</li>
+               <li>إضافة رول تلقائي عند الدخول.</li>
+             </ul>
+             <p>الميزة تعطي انطباعًا احترافيًا وتجعل الأعضاء يشعرون بالالتحام من أول لحظة.</p>`,
+        en: `<h4>On member join</h4>
+             <p>GxBot sends tailored welcome messages and can auto-assign roles and show quick-start guides.</p>
+             <ul>
+               <li>3 separate welcome channels.</li>
+               <li>3 embedded guides for onboarding.</li>
+               <li>Auto-welcome messages on join.</li>
+               <li>Auto-role assignment.</li>
+             </ul>`
       }
-    };
-
-    let currentLang = 'ar';
-    function setLang(lang){
-      currentLang = lang;
-      const L = LOCALES[lang];
-      document.getElementById("titleMain").innerText = L.titleMain;
-      document.getElementById("short-desc").innerText = L.shortDesc;
-      document.getElementById("inviteText").innerText = L.inviteText;
-      document.getElementById("supportText").innerText = L.supportText;
-      document.getElementById("gotoFeatures").innerText = L.gotoFeatures;
-      document.getElementById("gotoPrime").innerText = L.gotoPrime;
-      document.getElementById("kentosLabel").innerText = L.kentosLabel;
-      document.getElementById("kentosDesc").innerText = L.kentosDesc;
-      document.getElementById("features-title").innerText = L.featuresTitle;
-      document.getElementById("prime-title").innerText = L.primeTitle;
-      document.getElementById("prime-desc").innerText = L.primeDesc;
-
-      // toggle AR/EN button states
-      document.getElementById("langAR").setAttribute('aria-pressed', lang==='ar');
-      document.getElementById("langEN").setAttribute('aria-pressed', lang==='en');
-      // If you want to also translate features content, re-render features
-      renderFeatures();
+    },
+    {
+      id: "bank",
+      title: { ar: "نظام البنك (Kentos)", en: "Bank system (Kentos)" },
+      short: { ar: "محفظة لكل عضو، رقم حساب فريد، إيداع، سحب وتحويلات آمنة.", en: "Per-user wallets, unique account numbers, secure transfers." },
+      detail: {
+        ar: `<h4>نظام البنك داخل GxBot</h4>
+             <p>نظام البنك يمثل العمود الفقري لاقتصاد السيرفر، مصمم ليحاكي البنوك الحقيقية مع عنصر المتعة.</p>
+             <ol>
+               <li><strong>رقم حساب فريد لكل عضو:</strong> يسهل التحويل ويضمن الدقة.</li>
+               <li><strong>تحويلات آمنة ومرنة:</strong> تحويل داخلي بين أعضاء أو عبر سيرفرات مختلفة.</li>
+               <li><strong>أنواع التحويلات:</strong> تحويل عادي والتحويل البنكي المضمون مع تحقق الهوية.</li>
+               <li><strong>خدمات الإيداع والسحب:</strong> سحب الأرباح أو إيداعها في البنك لحماية الرصيد.</li>
+             </ol>`,
+        en: `<h4>Bank system</h4>
+             <p>The Bank is the backbone of the server economy, modeled like a real bank but fun.</p>
+             <ol>
+               <li><strong>Unique account number per user</strong> for accurate transfers.</li>
+               <li><strong>Secure & flexible transfers</strong> within server or across servers.</li>
+               <li><strong>Transfer types</strong>: regular and guaranteed bank transfers with verification.</li>
+               <li><strong>Deposit & withdraw</strong> options to protect balances.</li>
+             </ol>`
+      }
+    },
+    {
+      id: "top",
+      title: { ar: "نظام التوب والـ Leaderboards", en: "Top & Leaderboards" },
+      short: { ar: "عرض أغنى 10 أعضاء وترتيب عالمي عبر السيرفرات.", en: "Show top 10 richest members and global ranking." },
+      detail: {
+        ar: `<h4>نظام التوب</h4>
+             <p>نظام التوب يعرض أغنى 10 أعضاء بتصميم فخم، ويسمح بالتنافس عبر جميع السيرفرات التي يعمل فيها البوت.</p>
+             <ul>
+               <li>عرض أغنى 10 أعضاء.</li>
+               <li>ترتيب عالمي عبر سيرفرات متعددة.</li>
+               <li>عرض مركزك الشخصي مع المسافة التي تفصلك عن التوب 10.</li>
+             </ul>`,
+        en: `<h4>Top system</h4>
+             <p>A luxurious top board shows the richest 10 members and supports cross-server global ranking.</p>
+             <ul>
+               <li>Top 10 display.</li>
+               <li>Global leaderboard across servers.</li>
+               <li>See your position and gap to top 10.</li>
+             </ul>`
+      }
+    },
+    {
+      id: "backgrounds",
+      title: { ar: "نظام الخلفيات", en: "Backgrounds system" },
+      short: { ar: "170+ خلفية، شراء بالـ Kentos، إهداء وإدارة بسيطة.", en: "170+ backgrounds, buy with Kentos, gifting & management." },
+      detail: {
+        ar: `<h4>نظام الخلفيات</h4>
+             <p>أكثر من 170 خلفية لتخصيص الملف الشخصي. يمكن شراؤها أو إهداؤها وتبديلها في أي وقت.</p>
+             <ul>
+               <li>مجموعة ضخمة ومتنوعة.</li>
+               <li>شراء باستخدام Kentos.</li>
+               <li>إمكانية الإهداء وإدارة المجموعة بسهولة.</li>
+             </ul>`,
+        en: `<h4>Backgrounds</h4>
+             <p>Over 170 backgrounds to customize your profile. Buy, gift or swap anytime.</p>
+             <ul>
+               <li>Large, varied collection.</li>
+               <li>Buy using Kentos.</li>
+               <li>Gift and manage backgrounds easily.</li>
+             </ul>`
+      }
+    },
+    {
+      id: "xp_invites",
+      title: { ar: "نظام XP والدعوات", en: "XP & Invites system" },
+      short: { ar: "كسب XP من التفاعل، قوائم أعلى 5، وقوائم أفضل 10 للدعوات.", en: "Earn XP through activity, top 5 lists, top 10 invite leaders." },
+      detail: {
+        ar: `<h4>نظام الـXP والدعوات</h4>
+             <p>كل سيرفر له نظام XP مستقل؛ تُكسب نقاط عبر الرسائل أو الصوت. توجد قوائم أعلى 5 للتشجيع.</p>
+             <p>نظام الدعوات يعرض أفضل 10 أعضاء جلبًا لأعضاء جدد مع إحصائيات دقيقة.</p>`,
+        en: `<h4>XP & Invites</h4>
+             <p>Each server has an independent XP system; earn points via messages or voice. Top-5 lists encourage engagement.</p>
+             <p>Invite system shows top 10 inviters with detailed stats.</p>`
+      }
+    },
+    {
+      id: "tickets",
+      title: { ar: "نظام التيكتات المتكامل", en: "Integrated tickets system" },
+      short: { ar: "فتح تيكت خاص، خصوصية، حفظ اللوغات ونظام تأكيد متقدم.", en: "Private tickets, logs, advanced confirmations." },
+      detail: {
+        ar: `<h4>نظام التيكتات</h4>
+             <p>فتح تذكرة خاصة لكل طلب أو مشكلة. تضمن الخصوصية وتنظيم العمل للفرق.</p>
+             <h5>إضافات متقدمة:</h5>
+             <ul>
+               <li>عرض أبرز من فتحوا تذاكر.</li>
+               <li>نظام تأكيد وتعليق التذكرة للمراجعة.</li>
+               <li>حفظ محتوى التذكرة وإرساله إلى روم اللوغ بعد الإغلاق.</li>
+             </ul>`,
+        en: `<h4>Tickets</h4>
+             <p>Create private tickets for support requests. Ensures privacy and team organization.</p>
+             <h5>Advanced additions:</h5>
+             <ul>
+               <li>Top ticket openers list.</li>
+               <li>Confirmation & hold system for review.</li>
+               <li>Save ticket content and forward logs after close.</li>
+             </ul>`
+      }
+    },
+    {
+      id: "entertainment",
+      title: { ar: "أنظمة ترفيهية وأوامر ممتعة", en: "Entertainment systems" },
+      short: { ar: "عجلة GX، تشغيل القرآن، اقتراح أنمي/أفلام، اقتباسات وإحصائيات.", en: "GX wheel, Quran playback, anime/movie suggestions, quotes." },
+      detail: {
+        ar: `<h4>الترفيه في GxBot</h4>
+             <p>مجموعة أوامر ترفيهية: عجلة GX، تشغيل القرآن، ترشيحات أنمي/أفلام، حكم واقتباسات، ومعلومات العضوية والسيرفر.</p>`,
+        en: `<h4>Entertainment</h4>
+             <p>A suite of fun commands: GX wheel, Quran playback, anime/movie suggestions, quotes, member & server info.</p>`
+      }
+    },
+    {
+      id: "snipes",
+      title: { ar: "لوغ المحذوفات (Snipes)", en: "Deleted messages log (Snipes)" },
+      short: { ar: "توثيق كل ما يُحذف: نصوص، صور، فيديوهات مع إمكانية المراجعة.", en: "Logs of deleted texts, images and videos for review." },
+      detail: {
+        ar: `<h4>لوغ المحذوفات</h4>
+             <p>يحتفظ النظام بكل المحتوى المحذوف لمساعدة الإدارة على مراجعة المخالفات والاحتفاظ بالأدلة.</p>`,
+        en: `<h4>Snipes</h4>
+             <p>System stores deleted content to help admins review violations and keep evidence.</p>`
+      }
+    },
+    {
+      id: "gxhip",
+      title: { ar: "GxHip — الشبكة الاجتماعية داخل البوت", en: "GxHip — social network inside the bot" },
+      short: { ar: "بروفايل احترافي، منشورات، تعليقات ورسائل خاصة عبر السيرفرات.", en: "Profiles, posts, comments & DMs that work across servers." },
+      detail: {
+        ar: `<h4>GxHip</h4>
+             <p>نظام تواصل اجتماعي داخل البوت: بروفايل، منشورات، لايكات، تعليقات، إدارة صداقات، ورسائل خاصة تعمل عبر السيرفرات.</p>`,
+        en: `<h4>GxHip</h4>
+             <p>An internal social system: profiles, posts, likes, comments, friend management and cross-server DMs.</p>`
+      }
+    },
+    {
+      id: "audit",
+      title: { ar: "سجلات وتوثيق النظام", en: "Audit & logging" },
+      short: { ar: "توثيق الطرد، التعديلات، التغييرات على القنوات والرتب بدقة.", en: "Document bans, edits, channel & role changes precisely." },
+      detail: {
+        ar: `<h4>التوثيق ومراجعة الأحداث</h4>
+             <p>توثيق كامل لجميع الأحداث المهمة داخل السيرفر: طرد/باند، تغييرات الرتب، التعديلات على القنوات والرسائل.</p>`,
+        en: `<h4>Audit</h4>
+             <p>Full logging of important server events: bans, role changes, channel edits and message modifications.</p>`
+      }
+    },
+    {
+      id: "transfer",
+      title: { ar: "نقل البيانات الكاملة بين الحسابات", en: "Full account transfer" },
+      short: { ar: "نقل البروفايل، الرتب، الـ XP، البادجات والعناصر بأمان.", en: "Transfer profile, ranks, XP, badges & purchases securely." },
+      detail: {
+        ar: `<h4>نقل كامل للبروفايل</h4>
+             <p>نقل كامل للبيانات بين حسابين: صور بروفايل، الرانكات، المستويات، البادجات والمشتريات، مع الحفاظ على الملكية والأمان.</p>`,
+        en: `<h4>Full profile transfer</h4>
+             <p>Move full account data between two accounts: avatar, ranks, levels, badges and purchases with ownership preserved.</p>`
+      }
+    },
+    {
+      id: "verification",
+      title: { ar: "توثيق الحسابات وحماية الخصوصية", en: "Verification & privacy protection" },
+      short: { ar: "توثيق رسمي، شارات، مراجعة إدارية وإمكانية استعادة الحساب.", en: "Official verification, badges, admin review and account recovery." },
+      detail: {
+        ar: `<h4>توثيق GxBot</h4>
+             <ol>
+               <li>حماية شاملة للبيانات.</li>
+               <li>تسجيل رسمي لدى فريق الدعم.</li>
+               <li>شارات توثيق ومراجعة دقيقة.</li>
+               <li>استعادة الحساب ونقل البيانات بأمان.</li>
+             </ol>`,
+        en: `<h4>Verification</h4>
+             <ol>
+               <li>Comprehensive data protection.</li>
+               <li>Official registration with support team.</li>
+               <li>Verification badges and careful review.</li>
+               <li>Account recovery and secure transfer.</li>
+             </ol>`
+      }
     }
+  ];
 
-    // Features — texts in both languages (kept concise)
-    const FEATURES = [
-      {
-        id: "welcome",
-        title: { ar: "ترحيب احترافي للأعضاء الجدد", en: "Professional welcomes for new members" },
-        short: { ar: "رسائل ترحيب مخصصة، رول تلقائي، 3 قنوات ترحيب.", en: "Custom welcome messages, auto-role, multiple channels." },
-        detail: { ar: `<h4>عند دخول عضو جديد</h4><p>GxBot يرسل رسائل ترحيب مُصمَّمة مع إعدادات مرنة لشرح السيرفر تلقائيًا.</p>`, en: `<h4>On member join</h4><p>GxBot sends tailored welcome messages and can auto-assign roles and show guides.</p>` }
-      },
-      {
-        id: "bank",
-        title: { ar: "نظام البنك (Kentos)", en: "Bank system (Kentos)" },
-        short: { ar: "محفظة لكل عضو، رقم حساب فريد، إيداع، سحب.", en: "Per-user wallets, unique account numbers, deposit & withdraw." },
-        detail: { ar: `<h4>نظام البنك</h4><p>محفظة داخلية مع تحويلات آمنة وميزات حفظ الأرصدة.</p>`, en: `<h4>Bank system</h4><p>Internal wallet system with secure transfers and balance protection.</p>` }
-      },
-      {
-        id: "tickets",
-        title: { ar: "نظام التيكتات المتكامل", en: "Integrated tickets system" },
-        short: { ar: "فتح تيكت خاص، حفظ اللوغات، تأكيد متقدم.", en: "Private tickets, logs, advanced confirmations." },
-        detail: { ar: `<h4>التيكتات</h4><p>نظام يدعم حفظ محادثات التيكت وإرسال لوغ بعد الإغلاق.</p>`, en: `<h4>Tickets</h4><p>Saves ticket conversations and forwards logs after closing.</p>` }
-      },
-      {
-        id: "entertainment",
-        title: { ar: "أنظمة ترفيهية", en: "Entertainment systems" },
-        short: { ar: "عجلة GX، اقتراحات، اقتباسات.", en: "GX wheel, recommendations, quotes." },
-        detail: { ar: `<h4>ترفيه</h4><p>مجموعة أوامر لتنشيف الجو وترفيه الأعضاء.</p>`, en: `<h4>Entertainment</h4><p>Commands to keep the community active and entertained.</p>` }
-      },
-      {
-        id: "audit",
-        title: { ar: "سجلات وتوثيق", en: "Audit & logs" },
-        short: { ar: "توثيق الطرد، تغييرات القنوات والرتب.", en: "Document bans, channel & role changes." },
-        detail: { ar: `<h4>التوثيق</h4><p>سجل كامل للأحداث الإدارية لمراجعة سريعة.</p>`, en: `<h4>Audit</h4><p>Full event logs for quick administrative review.</p>` }
-      }
-    ];
+  // ----- Helpers: DOM refs -----
+  const featuresGrid = document.getElementById('featuresGrid');
+  const detailView = document.getElementById('detailView');
+  const detailTitle = document.getElementById('detailTitle');
+  const detailMeta = document.getElementById('detailMeta');
+  const detailContent = document.getElementById('detailContent');
+  const detailActions = document.getElementById('detailActions');
+  const closeDetail = document.getElementById('closeDetail');
 
-    /*************** Render features grid *****************/
-    const featuresGrid = document.getElementById("featuresGrid");
-    function renderFeatures(){
-      featuresGrid.innerHTML = "";
-      for(const f of FEATURES){
-        const card = document.createElement("button");
-        card.className = "card";
-        card.type = "button";
-        card.setAttribute("data-id", f.id);
-        card.setAttribute("aria-haspopup","dialog");
+  const contactView = document.getElementById('contactView');
+  const closeContact = document.getElementById('closeContact');
+  const mailLinkSmall = document.getElementById('mailLinkSmall');
+  const copyMail = document.getElementById('copyMail');
 
-        // build localized content
-        const t = (f.title && f.title[currentLang]) || f.title;
-        const s = (f.short && f.short[currentLang]) || f.short;
+  const langAR = document.getElementById('langAR');
+  const langEN = document.getElementById('langEN');
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const supportFab = document.getElementById('supportFab');
 
-        card.innerHTML = `
-          <h3>${t}</h3>
-          <p>${s}</p>
-          <span class="chip">${ currentLang === 'ar' ? 'المزيد' : 'More' }</span>
-        `;
+  // ----- Render features -----
+  function renderFeatures(){
+    featuresGrid.innerHTML = '';
+    features.forEach(f=>{
+      const card = document.createElement('button');
+      card.className = 'card' + (f.id === 'prime' ? ' prime' : '');
+      card.type = 'button';
+      card.setAttribute('data-id', f.id);
+      card.setAttribute('aria-haspopup','dialog');
+      card.setAttribute('role','listitem');
 
-        // keep chip accessible and ensure it's inside card
-        card.addEventListener("click", ()=> openFeature(f.id));
-        card.addEventListener("keydown", (e)=> { if(e.key === "Enter" || e.key === " ") { e.preventDefault(); openFeature(f.id); }});
-
-        featuresGrid.appendChild(card);
-      }
-    }
-
-    /*************** Modal logic (single reused modal) *****************/
-    const detailView = document.getElementById("detailView");
-    const detailTitle = document.getElementById("detailTitle");
-    const detailMeta = document.getElementById("detailMeta");
-    const detailContent = document.getElementById("detailContent");
-    const detailActions = document.getElementById("detailActions");
-    const closeDetail = document.getElementById("closeDetail");
-
-    let modalOpen = false;
-
-    function openFeature(id){
-      if(modalOpen) return;
-      modalOpen = true;
-      const f = FEATURES.find(x=> x.id === id);
-      if(!f){ modalOpen=false; return; }
-
-      // localized
+      // Build localized text
       const t = (f.title && f.title[currentLang]) || f.title;
-      const d = (f.detail && f.detail[currentLang]) || f.detail;
+      const s = (f.short && f.short[currentLang]) || f.short;
 
-      detailTitle.innerHTML = t;
-      detailMeta.innerHTML = `<strong>${ currentLang === 'ar' ? 'معرف' : 'ID' }:</strong> ${f.id}`;
-      detailContent.innerHTML = d;
-
-      detailActions.innerHTML = "";
-      const invite = document.createElement("a");
-      invite.className = "btn glow";
-      invite.href = INVITE_LINK;
-      invite.target = "_blank";
-      invite.rel = "noopener noreferrer";
-      invite.innerHTML = `<i class="fa fa-plus"></i> ${ LOCALES[currentLang].inviteText }`;
-      detailActions.appendChild(invite);
-
-      const support = document.createElement("a");
-      support.className = "btn";
-      support.href = SUPPORT_LINK;
-      support.target = "_blank";
-      support.rel = "noopener noreferrer";
-      support.innerHTML = `<i class="fa fa-comments"></i> ${ LOCALES[currentLang].supportText }`;
-      detailActions.appendChild(support);
-
-      // show modal
-      detailView.style.display = "flex";
-      detailView.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-
-      // small debounce
-      setTimeout(()=> { modalOpen = false; }, 200);
-    }
-
-    function closeOverlay(){
-      detailView.style.display = "none";
-      detailView.setAttribute("aria-hidden","true");
-      document.body.style.overflow = "";
-    }
-    closeDetail.addEventListener("click", closeOverlay);
-    detailView.addEventListener("click", (e)=> { if(e.target === detailView) closeOverlay(); });
-    window.addEventListener("keydown", (e)=> { if(e.key === "Escape") closeOverlay(); });
-
-    /*************** Support FAB + contact modal logic *****************/
-    const supportFab = document.getElementById("supportFab");
-    const contactView = document.getElementById("contactView");
-    const closeContact = document.getElementById("closeContact");
-    const copyMail = document.getElementById("copyMail");
-    const mailLink = document.getElementById("mailLink");
-
-    supportFab.addEventListener("click", ()=> {
-      // open contact view
-      contactView.style.display = "flex";
-      contactView.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-      // set mail link subject localized
-      const subj = encodeURIComponent(LOCALES[currentLang].mailSubject);
-      mailLink.href = `mailto:${SUPPORT_EMAIL}?subject=${subj}`;
-    });
-    closeContact.addEventListener("click", ()=> {
-      contactView.style.display = "none";
-      contactView.setAttribute("aria-hidden","true");
-      document.body.style.overflow = "";
-    });
-    contactView.addEventListener("click", (e)=> { if(e.target === contactView) { contactView.style.display='none'; contactView.setAttribute("aria-hidden","true"); document.body.style.overflow=""; } });
-
-    copyMail.addEventListener("click", async ()=> {
-      try{
-        await navigator.clipboard.writeText(SUPPORT_EMAIL);
-        copyMail.textContent = currentLang === 'ar' ? 'تم النسخ' : 'Copied';
-        setTimeout(()=> copyMail.textContent = (currentLang === 'ar' ? 'نسخ الإيميل' : 'Copy email'), 1400);
-      }catch(e){
-        alert(currentLang === 'ar' ? 'فشل النسخ — انسخ يدويًا: ' + SUPPORT_EMAIL : 'Copy failed — manually copy: ' + SUPPORT_EMAIL);
+      // If this is prime, show prime badge inside (we keep the main prime card above too)
+      let inner = '';
+      if(f.id === 'prime'){
+        inner += `<div style="text-align:center;margin-top:10px;"><div class="prime-badge"><img src="botprime.png" alt="Prime (botprime.png)" onerror="this.style.background='linear-gradient(90deg,#fff2cc,#fff0b0)'; this.src='';"></div></div>`;
       }
+
+      inner += `<h3>${escapeHtml(t)}</h3><p>${escapeHtml(s)}</p>`;
+      inner += `<span class="chip" role="button" aria-label="${currentLang==='ar' ? 'المزيد' : 'More'}" data-id="${f.id}">${currentLang==='ar' ? 'المزيد' : 'More'}</span>`;
+
+      card.innerHTML = inner;
+
+      // keyboard accessibility: Enter / Space to open
+      card.addEventListener('keydown', (e)=> {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openFeature(f.id);
+        }
+      });
+
+      // click
+      card.addEventListener('click', ()=> openFeature(f.id));
+
+      featuresGrid.appendChild(card);
     });
+  }
 
-    /*************** Header hide on scroll (UX) *****************/
-    let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
-    const headerEl = document.getElementById("pageHeader");
-    window.addEventListener("scroll", ()=>{
-      const current = window.pageYOffset || document.documentElement.scrollTop;
-      if(current > lastScroll && current > 60){ // scrolling down
-        headerEl.classList.add('header-hidden');
-      }else{
-        headerEl.classList.remove('header-hidden');
-      }
-      lastScroll = current <= 0 ? 0 : current;
-    }, { passive:true });
+  // helper to escape HTML for safe insertion of small texts (titles/shorts)
+  function escapeHtml(text){
+    if(typeof text !== 'string') return text;
+    return text.replace(/[&<>"'`=/]/g, function(s){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#x60;','/':'&#x2F;','=':'&#x3D;'})[s];});
+  }
 
-    /*************** small UX + stats placeholders *****************/
-    document.getElementById("stat-servers").innerText = "1,450+";
-    document.getElementById("stat-users").innerText = "52k+";
-    document.getElementById("stat-kentos").innerText = "8.2M";
+  // ----- Modal logic -----
+  function openFeature(id){
+    if(modalOpen) return;
+    modalOpen = true;
 
-    /*************** language buttons *****************/
-    document.getElementById("langAR").addEventListener("click", ()=> setLang('ar'));
-    document.getElementById("langEN").addEventListener("click", ()=> setLang('en'));
+    const f = features.find(x=> x.id === id);
+    if(!f){ modalOpen = false; return; }
 
-    /*************** Init render *****************/
-    setLang(currentLang);
+    const t = (f.title && f.title[currentLang]) || f.title;
+    const d = (f.detail && f.detail[currentLang]) || f.detail;
+
+    detailTitle.innerHTML = t;
+    detailMeta.innerHTML = `<strong>${ currentLang === 'ar' ? 'معرف' : 'ID' }:</strong> ${escapeHtml(f.id)}`;
+    // Allow HTML in content (we created it trusted), so insert directly
+    detailContent.innerHTML = d;
+
+    // actions
+    detailActions.innerHTML = '';
+    const inviteA = document.createElement('a');
+    inviteA.className = 'btn glow';
+    inviteA.href = INVITE_LINK;
+    inviteA.target = '_blank';
+    inviteA.rel = 'noopener noreferrer';
+    inviteA.innerHTML = `<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;${ currentLang === 'ar' ? 'دعوة البوت' : 'Invite Bot' }`;
+    detailActions.appendChild(inviteA);
+
+    const supportA = document.createElement('a');
+    supportA.className = 'btn';
+    supportA.href = SUPPORT_LINK;
+    supportA.target = '_blank';
+    supportA.rel = 'noopener noreferrer';
+    supportA.innerHTML = `<i class="fa fa-comments" aria-hidden="true"></i>&nbsp;${ currentLang === 'ar' ? 'سيرفر الدعم' : 'Support Server' }`;
+    detailActions.appendChild(supportA);
+
+    // show modal
+    detailView.style.display = 'flex';
+    detailView.setAttribute('aria-hidden','false');
+    // trap focus: save active element
+    previouslyFocused = document.activeElement;
+    // move focus to modal
+    detailView.focus();
+    document.body.style.overflow = 'hidden';
+
+    // set a11y focus trap listeners
+    setTimeout(()=>{ modalOpen = false; }, 200);
+  }
+
+  function closeOverlay(){
+    detailView.style.display = 'none';
+    detailView.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    // restore focus
+    if(previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+  }
+
+  // close handlers
+  closeDetail.addEventListener('click', closeOverlay);
+  detailView.addEventListener('click', (e)=> { if(e.target === detailView) closeOverlay(); });
+  window.addEventListener('keydown', (e)=> { if(e.key === 'Escape') { if(detailView.style.display === 'flex'){ closeOverlay(); } if(contactView.style.display === 'flex'){ closeContactView(); } } });
+
+  // Basic focus trap for modal (lightweight)
+  document.addEventListener('focus', function(event) {
+    if(detailView.style.display === 'flex' && !detailView.contains(event.target)) {
+      event.stopPropagation();
+      detailView.focus();
+    }
+  }, true);
+
+  // ----- Contact modal (support FAB) -----
+  function openContactView(){
+    contactView.style.display = 'flex';
+    contactView.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    // set mailto localized
+    const subject = encodeURIComponent(currentLang === 'ar' ? 'شكوى / تواصل مع GxBot' : 'Complaint / Contact GxBot');
+    mailLinkSmall.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}`;
+    // focus
+    contactView.focus();
+  }
+
+  function closeContactView(){
+    contactView.style.display = 'none';
+    contactView.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  supportFab.addEventListener('click', ()=> {
+    openContactView();
+  });
+
+  // close contact
+  closeContact.addEventListener('click', closeContactView);
+  contactView.addEventListener('click', (e)=> { if(e.target === contactView) closeContactView(); });
+
+  // copy email
+  copyMail.addEventListener('click', async ()=>{
+    try {
+      await navigator.clipboard.writeText(SUPPORT_EMAIL);
+      copyMail.textContent = currentLang === 'ar' ? 'تم النسخ' : 'Copied';
+      setTimeout(()=> copyMail.textContent = currentLang === 'ar' ? 'نسخ الإيميل' : 'Copy email', 1400);
+    } catch(e) {
+      alert((currentLang === 'ar' ? 'فشل النسخ — انسخ يدويًا: ' : 'Copy failed — manually copy: ') + SUPPORT_EMAIL);
+    }
+  });
+
+  // ----- Header hide on scroll behavior -----
+  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
+  const headerEl = document.querySelector('.site-header');
+  window.addEventListener('scroll', ()=>{
+    const current = window.pageYOffset || document.documentElement.scrollTop;
+    if(current > lastScroll && current > 80){
+      headerEl.classList.add('header-hidden');
+    } else {
+      headerEl.classList.remove('header-hidden');
+    }
+    lastScroll = current <= 0 ? 0 : current;
+  }, { passive:true });
+
+  // ----- Theme toggle -----
+  // default is dark; toggles .theme-light on body
+  themeToggle.addEventListener('click', ()=>{
+    if(document.documentElement.classList.contains('theme-light')){
+      document.documentElement.classList.remove('theme-light');
+      currentTheme = 'dark';
+      themeIcon.className = 'fa fa-moon';
+    } else {
+      document.documentElement.classList.add('theme-light');
+      currentTheme = 'light';
+      themeIcon.className = 'fa fa-sun';
+    }
+  });
+
+  // ----- Language buttons -----
+  function setLang(lang){
+    currentLang = lang;
+    // texts
+    document.getElementById('brandTitle').textContent = 'GxBot';
+    if(lang === 'ar'){
+      document.getElementById('short-desc').textContent = 'بوت ديسكورد لإدارة، أمان، اقتصاد وترفيه — تجربة متكاملة ومضيئة.';
+      document.getElementById('inviteText').textContent = 'دعوة البوت';
+      document.getElementById('supportText').textContent = 'سيرفر الدعم';
+      document.getElementById('gotoFeatures').textContent = 'اذهب للمميزات';
+      document.getElementById('gotoPrime').textContent = 'اشترك في Prime';
+      document.getElementById('kentosLabel').textContent = 'Kentos';
+      document.getElementById('kentosDesc').textContent = ' — عملة البوت الداخلية لتفعيل المميزات الحصرية.';
+      document.getElementById('features-title').textContent = 'أهم مميزات GxBot';
+      document.getElementById('prime-title').textContent = 'GxBot Prime';
+      document.getElementById('prime-desc').textContent = 'مميزات حصرية بتصميم ذهبي ومضيء — تفعيل عبر Kentos أو الدفع المباشر.';
+      // update AR/EN button pressed states
+      langAR.setAttribute('aria-pressed','true'); langEN.setAttribute('aria-pressed','false');
+      // Set doc lang and dir
+      document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl';
+    } else {
+      // English
+      document.getElementById('short-desc').textContent = 'All-in-one Discord bot: moderation, economy, security & fun.';
+      document.getElementById('inviteText').textContent = 'Invite Bot';
+      document.getElementById('supportText').textContent = 'Support Server';
+      document.getElementById('gotoFeatures').textContent = 'See features';
+      document.getElementById('gotoPrime').textContent = 'Join Prime';
+      document.getElementById('kentosLabel').textContent = 'Kentos';
+      document.getElementById('kentosDesc').textContent = ' — bot currency to enable premium features.';
+      document.getElementById('features-title').textContent = 'Top GxBot features';
+      document.getElementById('prime-title').textContent = 'GxBot Prime';
+      document.getElementById('prime-desc').textContent = 'Exclusive golden features — activate via Kentos or direct payment.';
+      langAR.setAttribute('aria-pressed','false'); langEN.setAttribute('aria-pressed','true');
+      document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr';
+    }
+    // re-render features so button labels and descriptions update
     renderFeatures();
+  }
+  langAR.addEventListener('click', ()=> setLang('ar'));
+  langEN.addEventListener('click', ()=> setLang('en'));
 
-    /*************** Accessibility: trap focus lightly for modals *****************/
-    document.addEventListener('focus', function(event) {
-      if((detailView.style.display === 'flex' || contactView.style.display === 'flex') && !document.querySelector('.detail-card')?.contains(event.target)) {
-        event.stopPropagation();
-        (detailView.style.display === 'flex' ? detailView : contactView).focus();
+  // ----- Small stats placeholder -----
+  document.getElementById('stat-servers').innerText = '1,450+';
+  document.getElementById('stat-users').innerText = '52k+';
+  document.getElementById('stat-kentos').innerText = '8.2M';
+
+  // ----- Hash routing: open feature if hash present ----- 
+  function handleHash(){
+    const h = location.hash || '';
+    if(h.startsWith('#feature-')){
+      const id = h.replace('#feature-','');
+      const exists = features.some(f=> f.id === id);
+      if(exists) openFeature(id);
+    }
+  }
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
+
+  // initial render
+  setLang(currentLang);
+  renderFeatures();
+
+  // ensure 'المزيد' buttons inside cards respond
+  document.addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(chip && chip.dataset.id){
+      openFeature(chip.dataset.id);
+    }
+  });
+
+  // small helper to allow anchor smooth scroll within page
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
       }
-    }, true);
+    });
+  });
+
+  // Focus management variable
+  let previouslyFocused = null;
+
+  // End of script
   </script>
+
 </body>
 </html>
