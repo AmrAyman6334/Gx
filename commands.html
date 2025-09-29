@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GX Bot - الأوامر</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(88, 101, 242, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b9bbbe;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #5865f2;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Commands Page */
+        .commands-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 5% 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #fff 0%, #b9bbbe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .commands-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #5865f2;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .command-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .command-card:hover {
+            border-color: #5865f2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.2);
+        }
+
+        .command-name {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .command-desc {
+            color: #b9bbbe;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .command-usage {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            color: #7289da;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(88, 101, 242, 0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #b9bbbe;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #5865f2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">⚡ GX Bot</div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="features.html">الميزات</a></li>
+            <li><a href="commands.html">الأوامر</a></li>
+            <li><a href="premium.html">Premium</a></li>
+            <li><a href="support.html">الدعم</a></li>
+        </ul>
+        <a href="#" class="btn-primary">أضف للديسكورد</a>
+    </nav>
+
+    <!-- Commands Container -->
+    <div class="commands-container">
+        <h2 class="section-title">أوامر البوت 📝</h2>
+        
+        <div class="commands-category">
+            <h3 class="category-title">🛡️ أوامر الإدارة</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">/ban</div>
+                    <div class="command-desc">حظر عضو من السيرفر</div>
+                    <div class="command-usage">/ban @user [reason]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/kick</div>
+                    <div class="command-desc">طرد عضو من السيرفر</div>
+                    <div class="command-usage">/kick @user [reason]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/mute</div>
+                    <div class="command-desc">كتم عضو لمدة محددة</div>
+                    <div class="command-usage">/mute @user [time]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/warn</div>
+                    <div class="command-desc">إعطاء تحذير لعضو</div>
+                    <div class="command-usage">/warn @user [reason]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/clear</div>
+                    <div class="command-desc">مسح عدد من الرسائل</div>
+                    <div class="command-usage">/clear [amount]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/role</div>
+                    <div class="command-desc">إدارة رتب الأعضاء</div>
+                    <div class="command-usage">/role @user @role</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="commands-category">
+            <h3 class="category-title">🎮 أوامر الألعاب</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">/trivia</div>
+                    <div class="command-desc">ابدأ لعبة الأسئلة</div>
+                    <div class="command-usage">/trivia [category]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/8ball</div>
+                    <div class="command-desc">اسأل الكرة السحرية</div>
+                    <div class="command-usage">/8ball [question]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/rps</div>
+                    <div class="command-desc">لعبة حجر ورقة مقص</div>
+                    <div class="command-usage">/rps [choice]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/coinflip</div>
+                    <div class="command-desc">رمي العملة</div>
+                    <div class="command-usage">/coinflip</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/guess</div>
+                    <div class="command-desc">لعبة تخمين الرقم</div>
+                    <div class="command-usage">/guess [number]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/roll</div>
+                    <div class="command-desc">رمي النرد</div>
+                    <div class="command-usage">/roll [sides]</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="commands-category">
+            <h3 class="category-title">ℹ️ أوامر المعلومات</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">/serverinfo</div>
+                    <div class="command-desc">معلومات عن السيرفر</div>
+                    <div class="command-usage">/serverinfo</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/userinfo</div>
+                    <div class="command-desc">معلومات عن عضو</div>
+                    <div class="command-usage">/userinfo [@user]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/help</div>
+                    <div class="command-desc">قائمة المساعدة</div>
+                    <div class="command-usage">/help [command]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/ping</div>
+                    <div class="command-desc">سرعة استجابة البوت</div>
+                    <div class="command-usage">/ping</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="features.html">الميزات</a>
+            <a href="commands.html">الأوامر</a>
+            <a href="premium.html">Premium</a>
+            <a href="support.html">الدعم</a>
+            <a href="#">الشروط والأحكام</a>
+            <a href="#">سياسة الخصوصية</a>
+        </div>
+        <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

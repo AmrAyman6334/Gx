@@ -1,250 +1,346 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>أيقونات سيرفر الدعم (25)</title>
-  <style>
-    body {
-      background: #0d1117;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    h1 { margin: 20px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 24px;
-      padding: 20px;
-    }
-    .icon-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    svg {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      background: radial-gradient(circle at center, #1e3c72, #2a5298);
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      display: block;
-      margin: auto;
-    }
-    button {
-      margin-top: 10px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      background: #238636;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover { background: #2ea043; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GX Bot - بوت ديسكورد احترافي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(88, 101, 242, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b9bbbe;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #5865f2;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(circle at 50% 50%, rgba(88, 101, 242, 0.1) 0%, transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(88, 101, 242, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            left: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(114, 137, 218, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #b9bbbe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b9bbbe;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn-secondary {
+            background: rgba(88, 101, 242, 0.1);
+            color: #5865f2;
+            padding: 0.8rem 2rem;
+            border: 2px solid #5865f2;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(88, 101, 242, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(88, 101, 242, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #b9bbbe;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(114, 137, 218, 0.1) 100%);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: #b9bbbe;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(88, 101, 242, 0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #b9bbbe;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #5865f2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>🎨 أيقونات سيرفر دعم البوت (1 - 25)</h1>
-  <div class="grid">
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">⚡ GX Bot</div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="features.html">الميزات</a></li>
+            <li><a href="commands.html">الأوامر</a></li>
+            <li><a href="premium.html">Premium</a></li>
+            <li><a href="support.html">الدعم</a></li>
+        </ul>
+        <a href="#" class="btn-primary">أضف للديسكورد</a>
+    </nav>
 
-    <!-- 🛡️ 1: حماية -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'shield')">تحميل</button>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>بوت ديسكورد متكامل 🚀</h1>
+            <p>أفضل بوت لإدارة وتطوير سيرفرك مع ميزات احترافية وسهلة الاستخدام</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">ابدأ الآن مجاناً</a>
+                <a href="features.html" class="btn-secondary">اكتشف الميزات</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- 🔑 2: مفتاح -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="7" cy="15" r="5"/>
-        <path d="M12 15h10v5h-3v-2h-4v2h-3z"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'key')">تحميل</button>
-    </div>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">سيرفر نشط</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2M+</div>
+            <div class="stat-label">مستخدم</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">أمر متاح</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">وقت التشغيل</div>
+        </div>
+    </section>
 
-    <!-- 👥 3: فريق -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 21v-2a4 4 0 00-3-3.87"/>
-        <path d="M7 21v-2a4 4 0 013-3.87"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'team')">تحميل</button>
-    </div>
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>جاهز للبدء؟ 🎯</h2>
+        <p>انضم لآلاف السيرفرات التي تستخدم GX Bot اليوم</p>
+        <a href="#" class="btn-primary">أضف البوت الآن</a>
+    </section>
 
-    <!-- 🤖 4: بوت -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="7" width="18" height="10" rx="2"/>
-        <circle cx="8" cy="12" r="1.5"/>
-        <circle cx="16" cy="12" r="1.5"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'bot')">تحميل</button>
-    </div>
-
-    <!-- 💬 5: شات -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.5 8.5 0 018 8z"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'chat')">تحميل</button>
-    </div>
-
-    <!-- 🎫 6: تذكرة -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 9h18v6H3z"/>
-        <path d="M7 9v6M17 9v6"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'ticket')">تحميل</button>
-    </div>
-
-    <!-- 📝 7: لوج -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h10l6 6v10a2 2 0 01-2 2z"/>
-        <path d="M17 21V13H7v8"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'logs')">تحميل</button>
-    </div>
-
-    <!-- 🛒 8: متجر -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="21" r="1"/>
-        <circle cx="20" cy="21" r="1"/>
-        <path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.66a2 2 0 001.99-1.75L23 6H6"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'shop')">تحميل</button>
-    </div>
-
-    <!-- 🎁 9: جوائز -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 12 20 22 4 22 4 12"/>
-        <rect x="2" y="7" width="20" height="5"/>
-        <line x1="12" y1="22" x2="12" y2="7"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'gift')">تحميل</button>
-    </div>
-
-    <!-- 🎮 10: ألعاب -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="6" width="20" height="12" rx="2"/>
-        <circle cx="8" cy="12" r="1.5"/>
-        <circle cx="16" cy="10" r="1.5"/>
-        <circle cx="16" cy="14" r="1.5"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'games')">تحميل</button>
-    </div>
-
-    <!-- 🎤 11: مايك -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 1a3 3 0 00-3 3v7a3 3 0 006 0V4a3 3 0 00-3-3z"/>
-        <path d="M19 10a7 7 0 01-14 0"/>
-        <line x1="12" y1="19" x2="12" y2="23"/>
-        <line x1="8" y1="23" x2="16" y2="23"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'mic')">تحميل</button>
-    </div>
-
-    <!-- 🎵 12: موسيقى -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 18V5l12-2v13"/>
-        <circle cx="6" cy="18" r="3"/>
-        <circle cx="18" cy="16" r="3"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'music')">تحميل</button>
-    </div>
-
-    <!-- 📢 13: إعلانات -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 11l18-5v12l-18-5V3z"/>
-        <path d="M7 21v-4"/>
-        <path d="M11 22v-4"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'announce')">تحميل</button>
-    </div>
-
-    <!-- 🖼️ 14: صور -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="9" cy="9" r="2"/>
-        <path d="M21 15l-5-5L5 21"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'images')">تحميل</button>
-    </div>
-
-    <!-- 🎬 15: فيديو -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="3" width="20" height="18" rx="2"/>
-        <polygon points="10,8 16,12 10,16"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'video')">تحميل</button>
-    </div>
-
-    <!-- ❤️ 16: تفاعل -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.8z"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'heart')">تحميل</button>
-    </div>
-
-    <!-- ⭐ 17: تقييم -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'star')">تحميل</button>
-    </div>
-
-    <!-- 🔔 18: تنبيهات -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-        <path d="M13.73 21a2 2 0 01-3.46 0"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'bell')">تحميل</button>
-    </div>
-
-    <!-- 👑 19: تاج -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 18l4-12 6 8 6-8 4 12H2z"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'crown')">تحميل</button>
-    </div>
-
-    <!-- 📈 20: لفل -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 3v18h18"/>
-        <path d="M3 12l5-5 4 4 7-7"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'level')">تحميل</button>
-    </div>
-
-    <!-- 🔗 21: روابط -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M10 13a5 5 0 007.07 0l1.42-1.42a5 5 0 00-7.07-7.07L10 6"/>
-        <path d="M14 11a5 5 0 00-7.07 0L5.5 12.5a5 5 0 007.07 7.07L14 18"/>
-      </svg>
-      <button onclick="downloadPNG(this.previousElementSibling,'link')">تحميل</button>
-    </div>
-
-    <!-- 📞 22: دعم -->
-    <div class="icon-card">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92V21a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.18 2 2 0 014 2h4.09a2 2 0 012 1.72c.12.9.37 1.78.73 2.6a2 2 0 01-.45 2.11L9.91 9.91a16 16 0
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="features.html">الميزات</a>
+            <a href="commands.html">الأوامر</a>
+            <a href="premium.html">Premium</a>
+            <a href="support.html">الدعم</a>
+            <a href="#">الشروط والأحكام</a>
+            <a href="#">سياسة الخصوصية</a>
+        </div>
+        <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>
