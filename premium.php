@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GX Bot - Premium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <?php include 'header.php'; ?>
+
+    <!-- Premium Container -->
+    <div class="premium-container">
+        <div class="premium-header">
+            <h1>⭐ GX Bot Premium</h1>
+            <p style="color: #b9bbbe; font-size: 1.3rem;">احصل على ميزات إضافية حصرية</p>
+        </div>
+
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <div class="plan-name">Free</div>
+                <div class="plan-price">مجاني</div>
+                <div class="plan-period">للأبد</div>
+                <ul class="plan-features">
+                    <li>جميع الأوامر الأساسية</li>
+                    <li>حماية أساسية</li>
+                    <li>دعم فني محدود</li>
+                    <li>إحصائيات بسيطة</li>
+                </ul>
+                <a href="#" class="btn-secondary">استخدم مجاناً</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="plan-name">👑 Premium</div>
+                <div class="plan-price">$4.99</div>
+                <div class="plan-period">شهرياً</div>
+                <ul class="plan-features">
+                    <li>جميع ميزات Free</li>
+
+                    <li>أوامر حصرية +50</li>
+                    <li>تخصيص كامل للبوت</li>
+                    <li>دعم فني مميز 24/7</li>
+                    <li>إحصائيات متقدمة</li>
+                    <li>بدون إعلانات</li>
+                    <li>أولوية في التحديثات</li>
+                </ul>
+                <a href="#" class="btn-primary">اشترك الآن</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <div class="plan-price">$19.99</div>
+                <div class="plan-period">شهرياً</div>
+                <ul class="plan-features">
+                    <li>جميع ميزات Premium</li>
+                    <li>عدد غير محدود من السيرفرات</li>
+                    <li>API مخصص</li>
+                    <li>استضافة مخصصة</li>
+                    <li>دعم مباشر</li>
+                    <li>تطوير مخصص</li>
+                    <li>SLA مضمون 99.9%</li>
+                </ul>
+                <a href="#" class="btn-secondary">تواصل معنا</a>
+            </div>
+        </div>
+
+        <div class="premium-benefits">
+            <h2 class="section-title">لماذا Premium؟ 💎</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">أداء أسرع</div>
+                    <div class="benefit-desc">استجابة فورية وأولوية في التنفيذ</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎨</div>
+                    <div class="benefit-title">تخصيص كامل</div>
+                    <div class="benefit-desc">عدل كل شيء ليناسب سيرفرك</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-title">حماية متقدمة</div>
+                    <div class="benefit-desc">أدوات حماية قوية ضد التهديدات</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-title">تحليلات عميقة</div>
+                    <div class="benefit-desc">رؤى مفصلة عن نشاط سيرفرك</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💬</div>
+                    <div class="benefit-title">دعم أولوية</div>
+                    <div class="benefit-desc">رد سريع من فريق الدعم</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php include 'footer.php'; ?>
+</body>
+</html>
