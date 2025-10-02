@@ -7,6 +7,7 @@
             <li><a href="premium.php">Premium</a></li>
             <li><a href="support.php">الدعم</a></li>
             <li><a href="terms.php">الشروط والاحكام</a></li>
+            <li><a href="#" class="btn-prime">Prime</a></li>
         </ul>
         <a href="#" class="btn-primary">أضف للديسكورد</a>
     </nav>
