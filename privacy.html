@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GX Bot - سياسة الخصوصية</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 5% 4rem;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ffff 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .privacy-header p {
+            color: #b9bbbe;
+            font-size: 1.1rem;
+        }
+
+        .privacy-content {
+            background: rgba(13, 2, 33, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .privacy-section h2 {
+            color: #00ffff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .privacy-section h3 {
+            color: #ff007f;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.8rem;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+
+        .privacy-section p {
+            color: #b9bbbe;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-section ul {
+            color: #b9bbbe;
+            line-height: 1.8;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: #00ffff;
+            font-weight: 600;
+        }
+
+        .important-notice {
+            background: rgba(255, 0, 127, 0.1);
+            border: 2px solid rgba(255, 0, 127, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .important-notice p {
+            color: #ff007f;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 1rem;
+            text-align: right;
+        }
+
+        .data-table th {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            color: #b9bbbe;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #b9bbbe;
+            font-style: italic;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #00ffff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            color: #ff007f;
+            transform: scale(1.1);
+        }
+
+        /* Prime Button Style */
+        .btn-prime {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0d0221;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(13, 2, 33, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                z-index: 999;
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links.active li {
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+            .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+            .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+            .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+            .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+            .nav-links li:nth-child(7) { animation-delay: 0.7s; }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-radius: 12px;
+                transition: all 0.3s;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 255, 255, 0.1);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            }
+
+            .btn-prime {
+                padding: 1rem 2.5rem;
+                font-size: 1.3rem;
+            }
+
+            nav .btn-primary {
+                display: none;
+            }
+
+            /* Close Button */
+            .close-menu {
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                background: none;
+                border: none;
+                color: #ff007f;
+                font-size: 2.5rem;
+                cursor: pointer;
+                transition: all 0.3s;
+                display: none;
+            }
+
+            .nav-links.active .close-menu {
+                display: block;
+            }
+
+            .close-menu:hover {
+                color: #00ffff;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">⚡ GX Bot</div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navMenu">
+            <!-- Close Button for Mobile -->
+            <button class="close-menu" onclick="toggleMenu()" aria-label="Close">✕</button>
+            
+            <li><a href="index.html" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="features.html" onclick="closeMenu()">الميزات</a></li>
+            <li><a href="commands.html" onclick="closeMenu()">الأوامر</a></li>
+            <li><a href="premium.html" onclick="closeMenu()">Premium</a></li>
+            <li><a href="support.html" onclick="closeMenu()">الدعم</a></li>
+            <li><a href="terms.html" onclick="closeMenu()">الشروط والاحكام</a></li>
+            <!--<li><a href="premium.html" class="btn-prime" onclick="closeMenu()">Prime</a></li>-->
+        </ul>
+        
+        <a href="https://discord.gg/g43V2Q62KP" class="btn-primary">أضف للديسكورد</a>
+    </nav>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close Menu
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
+    <!-- Privacy Container -->
+    <div class="privacy-container">
+        <div class="privacy-header">
+            <h1>سياسة الخصوصية 🔒</h1>
+            <p>نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية</p>
+        </div>
+
+        <div class="privacy-content">
+            <div class="important-notice">
+                <p>⚠️ آخر تحديث: 29 سبتمبر 2025 - يرجى مراجعة هذه السياسة بانتظام للاطلاع على أي تغييرات</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>1. المقدمة</h2>
+                <p>تصف سياسة الخصوصية هذه كيفية قيام <span class="highlight">GX Bot</span> ("نحن" أو "لنا" أو "خاصتنا") بجمع واستخدام وحماية ومشاركة معلوماتك الشخصية عند استخدامك لخدماتنا على Discord.</p>
+                <p>باستخدامك لـ GX Bot، فإنك توافق على جمع واستخدام المعلومات وفقاً لهذه السياسة.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>2. المعلومات التي نجمعها</h2>
+                
+                <h3>2.1 المعلومات التي تقدمها مباشرة</h3>
+                <p>عند استخدامك لـ GX Bot، قد نجمع المعلومات التالية:</p>
+                <ul>
+                    <li><span class="highlight">معرف المستخدم (User ID):</span> معرفك الفريد على Discord</li>
+                    <li><span class="highlight">اسم المستخدم:</span> اسمك على Discord</li>
+                    <li><span class="highlight">معرف السيرفر (Server ID):</span> معرف السيرفرات التي تستخدم فيها البوت</li>
+                    <li><span class="highlight">الأوامر المستخدمة:</span> سجل الأوامر التي تنفذها</li>
+                    <li><span class="highlight">الإعدادات:</span> تفضيلاتك وإعدادات السيرفر</li>
+                </ul>
+
+                <h3>2.2 المعلومات التي نجمعها تلقائياً</h3>
+                <ul>
+                    <li>معلومات الاستخدام وأوقات النشاط</li>
+                    <li>الرسائل التي يتفاعل معها البوت (للمراقبة والحماية)</li>
+                    <li>بيانات الأداء والأخطاء التقنية</li>
+                    <li>عنوان IP (للأمان فقط)</li>
+                </ul>
+
+                <h3>2.3 البيانات المحفوظة</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>نوع البيانات</th>
+                            <th>مدة الحفظ</th>
+                            <th>الغرض</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>معلومات المستخدم الأساسية</td>
+                            <td>طوال فترة استخدام الخدمة</td>
+                            <td>تقديم الخدمة</td>
+                        </tr>
+                        <tr>
+                            <td>سجل الأوامر</td>
+                            <td>30 يوماً</td>
+                            <td>التحسين والدعم</td>
+                        </tr>
+                        <tr>
+                            <td>إعدادات السيرفر</td>
+                            <td>حتى إزالة البوت</td>
+                            <td>حفظ التفضيلات</td>
+                        </tr>
+                        <tr>
+                            <td>سجلات الأخطاء</td>
+                            <td>90 يوماً</td>
+                            <td>الصيانة التقنية</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="privacy-section">
+                <h2>3. كيف نستخدم معلوماتك</h2>
+                <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+                <ul>
+                    <li><span class="highlight">تقديم الخدمة:</span> تشغيل وتحسين وظائف البوت</li>
+                    <li><span class="highlight">التخصيص:</span> تقديم تجربة مخصصة بناءً على تفضيلاتك</li>
+                    <li><span class="highlight">الأمان:</span> حماية المستخدمين من السبام والمحتوى الضار</li>
+                    <li><span class="highlight">التحسين:</span> تحليل الاستخدام لتحسين الميزات</li>
+                    <li><span class="highlight">الدعم:</span> الرد على استفساراتك ومساعدتك في حل المشاكل</li>
+                    <li><span class="highlight">الامتثال القانوني:</span> الالتزام بالقوانين واللوائح</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>4. مشاركة المعلومات</h2>
+                <p>نحن <span class="highlight">لا نبيع</span> معلوماتك الشخصية لأطراف ثالثة. قد نشارك معلوماتك في الحالات التالية فقط:</p>
+                
+                <h3>4.1 مقدمو الخدمات</h3>
+                <p>قد نشارك المعلومات مع مقدمي خدمات موثوقين يساعدوننا في تشغيل الخدمة، مثل:</p>
+                <ul>
+                    <li>خدمات الاستضافة السحابية</li>
+                    <li>خدمات قواعد البيانات</li>
+                    <li>خدمات التحليلات</li>
+                </ul>
+
+                <h3>4.2 المتطلبات القانونية</h3>
+                <p>قد نكشف عن معلوماتك إذا كان ذلك مطلوباً بموجب القانون أو لحماية حقوقنا أو حقوق الآخرين.</p>
+
+                <h3>4.3 Discord</h3>
+                <p>نحن نستخدم Discord API ونلتزم بشروط خدمة Discord وسياسة الخصوصية الخاصة بهم.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>5. أمان البيانات</h2>
+                <p>نتخذ تدابير أمنية مناسبة لحماية معلوماتك من الوصول غير المصرح به أو التغيير أو الإفصاح أو التدمير:</p>
+                <ul>
+                    <li>تشفير البيانات أثناء النقل والتخزين</li>
+                    <li>التحكم في الوصول والمصادقة</li>
+                    <li>المراقبة الأمنية المستمرة</li>
+                    <li>النسخ الاحتياطي المنتظم</li>
+                    <li>مراجعات الأمان الدورية</li>
+                </ul>
+                
+                <div class="important-notice">
+                    <p>⚠️ ملاحظة: لا يمكن ضمان الأمان الكامل عبر الإنترنت، ولكننا نبذل قصارى جهدنا لحماية بياناتك.</p>
+                </div>
+            </div>
+
+            <div class="privacy-section">
+                <h2>6. حقوقك</h2>
+                <p>لديك الحقوق التالية فيما يتعلق ببياناتك الشخصية:</p>
+                <ul>
+                    <li><span class="highlight">الوصول:</span> طلب نسخة من بياناتك الشخصية</li>
+                    <li><span class="highlight">التصحيح:</span> طلب تصحيح المعلومات غير الدقيقة</li>
+                    <li><span class="highlight">الحذف:</span> طلب حذف بياناتك الشخصية</li>
+                    <li><span class="highlight">التقييد:</span> طلب تقييد معالجة بياناتك</li>
+                    <li><span class="highlight">الاعتراض:</span> الاعتراض على معالجة بياناتك</li>
+                    <li><span class="highlight">النقل:</span> طلب نقل بياناتك إلى خدمة أخرى</li>
+                </ul>
+                <p>لممارسة أي من هذه الحقوق، يرجى التواصل معنا عبر: <span class="highlight">privacy@gxbot.com</span></p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>7. الاحتفاظ بالبيانات</h2>
+                <p>نحتفظ بمعلوماتك الشخصية فقط طالما كان ذلك ضرورياً للأغراض المذكورة في هذه السياسة. عند:</p>
+                <ul>
+                    <li>إزالة البوت من السيرفر: يتم حذف إعدادات السيرفر خلال 30 يوماً</li>
+                    <li>حذف حسابك: يتم حذف بياناتك الشخصية خلال 90 يوماً</li>
+                    <li>طلب الحذف: نقوم بحذف بياناتك خلال 30 يوماً من الطلب</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>8. خصوصية الأطفال</h2>
+                <p>خدماتنا غير موجهة للأطفال دون سن 13 عاماً. نحن لا نجمع عن قصد معلومات شخصية من الأطفال. إذا كنت والداً وتعتقد أن طفلك قد قدم لنا معلومات شخصية، يرجى الاتصال بنا.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>9. ملفات تعريف الارتباط (Cookies)</h2>
+                <p>نحن نستخدم ملفات تعريف الارتباط والتقنيات المشابهة على موقعنا الإلكتروني لـ:</p>
+                <ul>
+                    <li>تذكر تفضيلاتك وإعداداتك</li>
+                    <li>تحليل استخدام الموقع</li>
+                    <li>تحسين تجربة المستخدم</li>
+                </ul>
+                <p>يمكنك التحكم في ملفات تعريف الارتباط من خلال إعدادات المتصفح الخاص بك.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>10. التغييرات على هذه السياسة</h2>
+                <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنخطرك بأي تغييرات جوهرية عن طريق:</p>
+                <ul>
+                    <li>نشر السياسة الجديدة على موقعنا</li>
+                    <li>إرسال إشعار عبر Discord</li>
+                    <li>إرسال بريد إلكتروني (للمشتركين في Premium)</li>
+                </ul>
+                <p>ننصحك بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تحديثات.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>11. النقل الدولي للبيانات</h2>
+                <p>قد يتم نقل معلوماتك ومعالجتها في دول أخرى غير بلد إقامتك. نضمن أن جميع عمليات النقل تتم وفقاً للمعايير القانونية المعمول بها.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2>12. الاتصال بنا</h2>
+                <p>إذا كان لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، يمكنك التواصل معنا عبر:</p>
+                <ul>
+                    <li><span class="highlight">البريد الإلكتروني:</span> privacy@gxbot.com</li>
+                    <li><span class="highlight">سيرفر Discord:</span> انضم لسيرفر الدعم الرسمي</li>
+                    <li><span class="highlight">الموقع:</span> <a href="support.html" style="color: #00ffff;">صفحة الدعم</a></li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2>13. الموافقة</h2>
+                <p>باستخدامك لـ GX Bot، فإنك توافق على جمع واستخدام المعلومات كما هو موضح في هذه السياسة. إذا كنت لا توافق على أي جزء من هذه السياسة، يجب عليك التوقف عن استخدام خدماتنا.</p>
+            </div>
+
+            <div class="last-updated">
+                آخر تحديث: 29 سبتمبر 2025 | سياسة الخصوصية النسخة 2.0
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+    <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="features.html">الميزات</a>
+        <a href="commands.html">الأوامر</a>
+        <a href="premium.html">Premium</a>
+        <a href="support.html">الدعم</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+    </div>
+    <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
+</footer>
+<script>
+    // Toggle Menu
+    function toggleMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.toggle('active');
+        
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Close Menu
+    function closeMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
+</body>
+</html>

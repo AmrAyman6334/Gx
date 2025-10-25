@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}GX Bot - الإحصائيات المباشرة{% endblock %}
+
+{% block content %}
+<div class="stats-page">
+    <div class="stats-container">
+        <div class="page-header">
+            <h1>📊 إحصائيات GX Bot</h1>
+            <p style="color: #b9bbbe;">بيانات مباشرة من قناة التليجرام</p>
+            <div id="connection-status" class="status-indicator offline">
+                <span class="status-dot"></span>
+                <span>جاري تحميل البيانات...</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><span class="stat-icon">👥</span><div class="stat-value">—</div><div class="stat-label">إجمالي المستخدمين</div></div>
+            <div class="stat-card"><span class="stat-icon">💰</span><div class="stat-value">—</div><div class="stat-label">إجمالي الكينتو</div></div>
+            <div class="stat-card"><span class="stat-icon">🏦</span><div class="stat-value">—</div><div class="stat-label">الودائع</div></div>
+            <div class="stat-card"><span class="stat-icon">👛</span><div class="stat-value">—</div><div class="stat-label">المحافظ</div></div>
+            <div class="stat-card"><span class="stat-icon">📈</span><div class="stat-value">—</div><div class="stat-label">متوسط لكل مستخدم</div></div>
+            <div class="stat-card"><span class="stat-icon">🌍</span><div class="stat-value">—</div><div class="stat-label">السيرفرات</div></div>
+            <div class="stat-card"><span class="stat-icon">⭐</span><div class="stat-value">—</div><div class="stat-label">إجمالي الخبرة</div></div>
+            <div class="stat-card"><span class="stat-icon">🏆</span><div class="stat-value">—</div><div class="stat-label">أعلى مستوى</div></div>
+        </div>
+
+        <div class="last-update">📅 آخر تحديث: —</div>
+
+        <div class="refresh-section">
+            <button class="btn-refresh" onclick="loadStats()">🔄 تحديث البيانات</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.stats-page {min-height:100vh;padding:120px 2rem 4rem;background:linear-gradient(135deg,#0d0221 0%,#1a0b3d 100%);}
+.stats-container{max-width:1400px;margin:0 auto;}
+.page-header{text-align:center;margin-bottom:3rem;color:white;}
+.page-header h1{font-size:3rem;background:linear-gradient(135deg,#00ffff 0%,#ff007f 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;}
+.status-indicator{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.5rem;border-radius:50px;margin-top:1rem;}
+.status-indicator.online{background:rgba(0,255,0,0.2);border:2px solid #00ff00;color:#00ff00;}
+.status-indicator.offline{background:rgba(255,165,0,0.2);border:2px solid #ffa500;color:#ffa500;}
+.status-dot{width:10px;height:10px;border-radius:50%;background:currentColor;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:2rem;}
+.stat-card{background:rgba(13,2,33,0.8);border:2px solid rgba(0,255,255,0.3);border-radius:20px;padding:2rem;text-align:center;transition:all 0.3s;color:white;}
+.stat-card:hover{border-color:#ff007f;transform:translateY(-5px);box-shadow:0 10px 30px rgba(255,0,127,0.3);}
+.stat-icon{font-size:3rem;margin-bottom:1rem;display:block;}
+.stat-value{font-size:2.5rem;font-weight:bold;background:linear-gradient(135deg,#00ffff 0%,#ff007f 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;}
+.stat-label{color:#b9bbbe;font-size:1rem;}
+.last-update{text-align:center;color:#72767d;margin:2rem 0;}
+.refresh-section{text-align:center;}
+.btn-refresh{background:linear-gradient(135deg,#00ffff 0%,#ff007f 100%);color:#0d0221;border:none;padding:1rem 2rem;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s;}
+.btn-refresh:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(0,255,255,0.4);}
+</style>
+
+<script>
+async function loadStats() {
+    const statusEl = document.getElementById('connection-status');
+    try {
+        // 🟢 جلب البيانات من الملف PHP
+        const res = await fetch("get_data_from_telegram.php");
+        const stats = await res.json();
+
+        if (stats.error) throw new Error(stats.error);
+
+        // ✅ حالة الاتصال
+        statusEl.className = 'status-indicator online';
+        statusEl.innerHTML = '<span class="status-dot"></span><span>🟢 تم تحميل البيانات من تليجرام</span>';
+
+        const cards = document.querySelectorAll(".stat-card");
+
+        // ✅ عرض القيم
+        cards[0].querySelector(".stat-value").textContent = (stats.total_users || 0).toLocaleString();
+        cards[1].querySelector(".stat-value").textContent = (stats.total_currency || 0).toLocaleString();
+        cards[2].querySelector(".stat-value").textContent = (stats.total_deposit || 0).toLocaleString();
+        cards[3].querySelector(".stat-value").textContent = (stats.total_kento || 0).toLocaleString();
+        cards[4].querySelector(".stat-value").textContent = (stats.avg_currency || 0).toLocaleString();
+        cards[5].querySelector(".stat-value").textContent = (stats.total_guilds || 0).toLocaleString();
+        cards[6].querySelector(".stat-value").textContent = (stats.total_xp || 0).toLocaleString();
+        cards[7].querySelector(".stat-value").textContent = stats.max_level || "—";
+
+        // ✅ تحديث وقت آخر تحديث
+        document.querySelector(".last-update").textContent = "📅 آخر تحديث: " + (stats.last_update || "غير معروف");
+    } catch (err) {
+        console.error("⚠️ فشل جلب البيانات:", err);
+        statusEl.className = 'status-indicator offline';
+        statusEl.innerHTML = '<span class="status-dot"></span><span>⚠️ فشل الاتصال بتليجرام</span>';
+    }
+}
+
+// 🕒 تحميل البيانات أول مرة وتحديثها كل دقيقة
+loadStats();
+setInterval(loadStats, 60000);
+</script>
+{% endblock %}
