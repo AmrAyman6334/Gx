@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GX Bot - تسجيل الدخول</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -300px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .auth-container::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -250px;
+            left: -250px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .auth-box {
+            background: rgba(13, 2, 33, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.3), 0 0 40px rgba(255, 0, 127, 0.2);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.6));
+            }
+        }
+
+        .auth-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ffff 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            font-weight: 900;
+        }
+
+        .auth-header p {
+            color: #b9bbbe;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .discord-login {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .discord-login:hover::before {
+            left: 100%;
+        }
+
+        .discord-login:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 50px rgba(88, 101, 242, 0.8);
+        }
+
+        .discord-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .features-list {
+            text-align: right;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .features-list h3 {
+            color: #00ffff;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #b9bbbe;
+            font-size: 1rem;
+        }
+
+        .feature-item .icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-home a {
+            color: #00ffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .back-home a:hover {
+            color: #ff007f;
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+        }
+
+        .security-note {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: right;
+        }
+
+        .security-note p {
+            color: #b9bbbe;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .security-note .icon {
+            display: inline-block;
+            color: #00ffff;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .auth-box {
+                padding: 3rem 2rem;
+            }
+
+            .auth-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .auth-logo {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">⚡ GX Bot</div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navMenu">
+            <!-- Close Button for Mobile -->
+            <button class="close-menu" onclick="toggleMenu()" aria-label="Close">✕</button>
+            
+            <li><a href="index.html" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="features.html" onclick="closeMenu()">الميزات</a></li>
+            <li><a href="commands.html" onclick="closeMenu()">الأوامر</a></li>
+            <li><a href="premium.html" onclick="closeMenu()">Premium</a></li>
+            <li><a href="support.html" onclick="closeMenu()">الدعم</a></li>
+            <li><a href="terms.html" onclick="closeMenu()">الشروط والاحكام</a></li>
+            <!--<li><a href="premium.html" class="btn-prime" onclick="closeMenu()">Prime</a></li>-->
+        </ul>
+        
+        <a href="https://discord.gg/g43V2Q62KP" class="btn-primary">أضف للديسكورد</a>
+    </nav>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close Menu
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-logo">⚡</div>
+            
+            <div class="auth-header">
+                <h1>تسجيل الدخول</h1>
+                <p>استخدم حساب Discord الخاص بك للوصول إلى لوحة التحكم</p>
+            </div>
+
+            <!-- Discord Login Button -->
+            <button class="discord-login" onclick="window.location.href='#'">
+                <svg class="discord-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+                </svg>
+                المتابعة مع Discord
+            </button>
+
+            <!-- Features List -->
+            <div class="features-list">
+                <h3>لماذا Discord؟</h3>
+                <div class="feature-item">
+                    <span class="icon">🔒</span>
+                    <span>تسجيل دخول آمن ومشفر</span>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">⚡</span>
+                    <span>وصول سريع بنقرة واحدة</span>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🎯</span>
+                    <span>لا حاجة لإنشاء حساب جديد</span>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">✨</span>
+                    <span>مزامنة تلقائية مع سيرفرات Discord</span>
+                </div>
+            </div>
+
+            <!-- Security Note -->
+            <div class="security-note">
+                <p>
+                    <span class="icon">🛡️</span>
+                    نحن لا نحفظ كلمة المرور الخاصة بك. يتم التحقق من هويتك بشكل آمن عبر Discord OAuth 2.0
+                </p>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <span>←</span>
+                    <span>العودة للرئيسية</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

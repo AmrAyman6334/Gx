@@ -5,136 +5,586 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GX Bot - الأوامر</title>
     <link rel="stylesheet" href="style.css">
+<style>
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #00ffff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            color: #ff007f;
+            transform: scale(1.1);
+        }
+
+        /* Prime Button Style */
+        .btn-prime {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0d0221;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(13, 2, 33, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                z-index: 999;
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links.active li {
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+            .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+            .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+            .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+            .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+            .nav-links li:nth-child(7) { animation-delay: 0.7s; }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-radius: 12px;
+                transition: all 0.3s;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 255, 255, 0.1);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            }
+
+            .btn-prime {
+                padding: 1rem 2.5rem;
+                font-size: 1.3rem;
+            }
+
+            nav .btn-primary {
+                display: none;
+            }
+
+            /* Close Button */
+            .close-menu {
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                background: none;
+                border: none;
+                color: #ff007f;
+                font-size: 2.5rem;
+                cursor: pointer;
+                transition: all 0.3s;
+                display: none;
+            }
+
+            .nav-links.active .close-menu {
+                display: block;
+            }
+
+            .close-menu:hover {
+                color: #00ffff;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav>
         <div class="logo">⚡ GX Bot</div>
-        <ul class="nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="features.html">الميزات</a></li>
-            <li><a href="commands.html">الأوامر</a></li>
-            <li><a href="premium.html">Premium</a></li>
-            <li><a href="support.html">الدعم</a></li>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navMenu">
+            <!-- Close Button for Mobile -->
+            <button class="close-menu" onclick="toggleMenu()" aria-label="Close">✕</button>
+            
+            <li><a href="index.html" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="features.html" onclick="closeMenu()">الميزات</a></li>
+            <li><a href="commands.html" onclick="closeMenu()">الأوامر</a></li>
+            <li><a href="premium.html" onclick="closeMenu()">Premium</a></li>
+            <li><a href="support.html" onclick="closeMenu()">الدعم</a></li>
+            <li><a href="terms.html" onclick="closeMenu()">الشروط والاحكام</a></li>
+            <!--<li><a href="premium.html" class="btn-prime" onclick="closeMenu()">Prime</a></li>-->
         </ul>
-        <a href="#" class="btn-primary">أضف للديسكورد</a>
+        
+        <a href="https://discord.gg/g43V2Q62KP" class="btn-primary">أضف للديسكورد</a>
     </nav>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close Menu
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
 
     <!-- Commands Container -->
     <div class="commands-container">
         <h2 class="section-title">أوامر البوت 📝</h2>
         
         <div class="commands-category">
-            <h3 class="category-title">🛡️ أوامر الإدارة</h3>
+            <h3 class="category-title">📋 الأوامر العامة</h3>
             <div class="commands-grid">
                 <div class="command-card">
+                    <div class="command-name">/quran</div>
+                    <div class="command-desc">تشغيل أو إيقاف تلاوة القرآن الكريم.</div>
+                    <div class="command-usage">/quran</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/vote </div>
+                    <div class="command-desc">التصويت للبوت على Top.gg.</div>
+                    <div class="command-usage">/vote</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/server</div>
+                    <div class="command-desc">عرض إحصائيات وخصائص السيرفر.</div>
+                    <div class="command-usage">/server</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/verify</div>
+                    <div class="command-desc">قدّم طلب توثيق حسابك في البوت .</div>
+                    <div class="command-usage">/verify</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/bot</div>
+                    <div class="command-desc">معلومات وروابط البوت.</div>
+                    <div class="command-usage">/bot</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/gxhup</div>
+                    <div class="command-desc"> الشبكة العالميه عبر السيرفرات .</div>
+                    <div class="command-usage">/gxhup</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/owner_bot</div>
+                    <div class="command-desc">معلومات حول مالك البوت.</div>
+                    <div class="command-usage">/owner_bot</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/lnformation</div>
+                    <div class="command-desc">عرض معلوماتك داخل السيرفر.</div>
+                    <div class="command-usage">/lnformation</div>
+                </div>
+            </div>
+        </div>
+        <div class="commands-category">
+            <h3 class="category-title">🛠️ إدارة الأعضاء</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">/warn</div>
+                    <div class="command-desc">تحذير عضو.</div>
+                    <div class="command-usage">/warn [username] [reason]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/warnings</div>
+                    <div class="command-desc">عرض تحذيرات عضو.</div>
+                    <div class="command-usage">/warnings [username]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/remove_warnings</div>
+                    <div class="command-desc">حذف تحذير</div>
+                    <div class="command-usage">/warn [username] [number of warn]</div>
+                </div>
+                <div class="command-card">
                     <div class="command-name">/ban</div>
-                    <div class="command-desc">حظر عضو من السيرفر</div>
-                    <div class="command-usage">/ban @user [reason]</div>
+                    <div class="command-desc">حظر عضو.</div>
+                    <div class="command-usage">/ban [username]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/unban</div>
+                    <div class="command-desc">إلغاء حظر عضو.</div>
+                    <div class="command-usage">/unban [username]</div>
                 </div>
                 <div class="command-card">
                     <div class="command-name">/kick</div>
-                    <div class="command-desc">طرد عضو من السيرفر</div>
-                    <div class="command-usage">/kick @user [reason]</div>
+                    <div class="command-desc">طرد عضو.</div>
+                    <div class="command-usage">/kick [username]</div>
                 </div>
                 <div class="command-card">
                     <div class="command-name">/mute</div>
-                    <div class="command-desc">كتم عضو لمدة محددة</div>
-                    <div class="command-usage">/mute @user [time]</div>
+                    <div class="command-desc">كتم عضو.</div>
+                    <div class="command-usage">/mute [username] [time]</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/warn</div>
-                    <div class="command-desc">إعطاء تحذير لعضو</div>
-                    <div class="command-usage">/warn @user [reason]</div>
+                    <div class="command-name">/timeout</div>
+                    <div class="command-desc">تايم أوت</div>
+                    <div class="command-usage">/timeout [username] [time] [reason]</div>
                 </div>
-                <div class="command-card">
-                    <div class="command-name">/clear</div>
-                    <div class="command-desc">مسح عدد من الرسائل</div>
-                    <div class="command-usage">/clear [amount]</div>
-                </div>
-                <div class="command-card">
+                  <div class="command-card">
                     <div class="command-name">/role</div>
-                    <div class="command-desc">إدارة رتب الأعضاء</div>
-                    <div class="command-usage">/role @user @role</div>
-                </div>
-            </div>
-        </div>
+                    <div class="command-desc">إعطاء أو إزالة رتبة.</div>
+                    <div class="command-usage">/role [username] [role] [give/remove]</div>
+                  </div>
+                  <div class="command-card">
+                    <div class="command-name">/give_role</div>
+                    <div class="command-desc">إعطاء رتبة للجميع.</div>
+                    <div class="command-usage">/give_role [role]</div>
+                  </div>
+                     <div class="command-card">
+                    <div class="command-name">/remove_role</div>
+                    <div class="command-desc">إزالة رتبة من الجميع.</div>
+                    <div class="command-usage">/remove_role [role]</div>
+                  </div>
 
+        </div>
         <div class="commands-category">
-            <h3 class="category-title">🎮 أوامر الألعاب</h3>
+            <h3 class="category-title">🔐 التحكم في الرومات</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name">/trivia</div>
-                    <div class="command-desc">ابدأ لعبة الأسئلة</div>
-                    <div class="command-usage">/trivia [category]</div>
+                    <div class="command-name">/lock</div>
+                    <div class="command-desc">قفل الروم الحالي.</div>
+                    <div class="command-usage">/lock</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/8ball</div>
-                    <div class="command-desc">اسأل الكرة السحرية</div>
-                    <div class="command-usage">/8ball [question]</div>
+                    <div class="command-name">/unlock</div>
+                    <div class="command-desc">فتح الروم.</div>
+                    <div class="command-usage">/unlock</div>
                 </div>
+                    <div class="command-card">
+                    <div class="command-name">/clear</div>
+                    <div class="command-desc"> مسح رسائل.</div>
+                    <div class="command-usage">/clear</div>
+                    </div>
+                 <div class="command-card">
+                    <div class="command-name">/block_room</div>
+                    <div class="command-desc"> منع أوامر البوت.</div>
+                    <div class="command-usage">/block_room [room] [type] [condition]</div>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/Hide_rooms</div>
+                        <div class="command-desc">إخفاء كل الرومات.</div>
+                        <div class="command-usage">/Hide_rooms</div>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/Show_rooms</div>
+                        <div class="command-desc">إظهار كل الرومات.</div>
+                        <div class="command-usage">/Show_rooms</div>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/allow_links</div>
+                        <div class="command-desc">السماح بالروابط.</div>
+                        <div class="command-usage">/allow_links [room]</div>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/block_links</div>
+                        <div class="command-desc">منع الروابط.</div>
+                        <div class="command-usage">/block_links [room]</div>
+                    </div>
+            </div>
+        </div>
+        <div class="commands-category">
+            <h3 class="category-title">⚙️ إعدادات متقدمة</h3>
+            <div class="commands-grid">
+                
+              <!-- عادي -->
                 <div class="command-card">
-                    <div class="command-name">/rps</div>
-                    <div class="command-desc">لعبة حجر ورقة مقص</div>
-                    <div class="command-usage">/rps [choice]</div>
+                <div class="command-name">/registration_panel</div>
+                <div class="command-desc">لوحة تسجيل الإدارة</div>
+                <div class="command-usage"></div>
                 </div>
+
                 <div class="command-card">
-                    <div class="command-name">/coinflip</div>
-                    <div class="command-desc">رمي العملة</div>
-                    <div class="command-usage">/coinflip</div>
+                <div class="command-name">/general_reply</div>
+                <div class="command-desc">إعداد الرد التلقائي في روم محدد</div>
+                <div class="command-usage"></div>
                 </div>
+
                 <div class="command-card">
-                    <div class="command-name">/guess</div>
-                    <div class="command-desc">لعبة تخمين الرقم</div>
-                    <div class="command-usage">/guess [number]</div>
+                <div class="command-name">/setup_welcome</div>
+                <div class="command-desc">تفعيل نظام الترحيب بالمنضمين</div>
+                <div class="command-usage"></div>
                 </div>
+
                 <div class="command-card">
-                    <div class="command-name">/roll</div>
-                    <div class="command-desc">رمي النرد</div>
-                    <div class="command-usage">/roll [sides]</div>
+                <div class="command-name">/setup_suggestions</div>
+                <div class="command-desc">تعيين روم خاص للاقتراحات</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/suggest</div>
+                <div class="command-desc">إرسال اقتراح إلى روم الاقتراحات</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/aliases</div>
+                <div class="command-desc">تعيين اختصار للأوامر</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/show_aliases</div>
+                <div class="command-desc">عرض جميع الاختصارات</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/auto_reply</div>
+                <div class="command-desc">إضافة رد تلقائي مخصص</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/ticket_points</div>
+                <div class="command-desc">عرض نقاط تجميع التذاكر</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/setup_teckit</div>
+                <div class="command-desc">إعداد وإرسال رسالة التذاكر</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/auto_reply_remove</div>
+                <div class="command-desc">حذف رد تلقائي مضاف مسبقًا</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <!-- برايم -->
+                <div class="command-card">
+                <div class="command-name">/log</div>
+                <div class="command-desc">🔹 (برايم) تفعيل نظام اللوج لمتابعة الأحداث</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/remove</div>
+                <div class="command-desc">🔹 (برايم) حذف جميع الرومات والرولات من السيرفر</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/stop_log</div>
+                <div class="command-desc">🔹 (برايم) إيقاف عمل نظام اللوج</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/log_deleted</div>
+                <div class="command-desc">🔹 (برايم) تفعيل لوج لمتابعة الرسائل المحذوفة</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/invite_logs</div>
+                <div class="command-desc">🔹 (برايم) تتبع جميع الدعوات وإنشائها</div>
+                <div class="command-usage"></div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/remove_invites</div>
+                <div class="command-desc">🔹 (برايم) تصفير وحذف كل الدعوات الموجودة بالسيرفر</div>
+                <div class="command-usage"></div>
                 </div>
             </div>
         </div>
-
         <div class="commands-category">
-            <h3 class="category-title">ℹ️ أوامر المعلومات</h3>
+            <h3 class="category-title">📋 الأوامر العامة</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name">/serverinfo</div>
-                    <div class="command-desc">معلومات عن السيرفر</div>
-                    <div class="command-usage">/serverinfo</div>
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/userinfo</div>
-                    <div class="command-desc">معلومات عن عضو</div>
-                    <div class="command-usage">/userinfo [@user]</div>
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/help</div>
-                    <div class="command-desc">قائمة المساعدة</div>
-                    <div class="command-usage">/help [command]</div>
-                </div>
-                <div class="command-card">
-                    <div class="command-name">/ping</div>
-                    <div class="command-desc">سرعة استجابة البوت</div>
-                    <div class="command-usage">/ping</div>
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="commands-category">
+            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+            </div>
+        </div>
+        <div class="commands-category">
+            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+            </div>
+        </div>
+        <div class="commands-category">
+            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name"></div>
+                    <div class="command-desc"></div>
+                    <div class="command-usage"></div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Footer -->
+    </di>
+
     <footer>
-        <div class="footer-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="features.html">الميزات</a>
-            <a href="commands.html">الأوامر</a>
-            <a href="premium.html">Premium</a>
-            <a href="support.html">الدعم</a>
-            <a href="#">الشروط والأحكام</a>
-            <a href="#">سياسة الخصوصية</a>
-        </div>
-        <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
-    </footer>
+    <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="features.html">الميزات</a>
+        <a href="commands.html">الأوامر</a>
+        <a href="premium.html">Premium</a>
+        <a href="support.html">الدعم</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+    </div>
+    <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
+</footer>
+<script>
+    // Toggle Menu
+    function toggleMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.toggle('active');
+        
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Close Menu
+    function closeMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 </body>
 </html>

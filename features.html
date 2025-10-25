@@ -5,20 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GX Bot - الميزات</title>
     <link rel="stylesheet" href="style.css">
+<style>
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #00ffff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            color: #ff007f;
+            transform: scale(1.1);
+        }
+
+        /* Prime Button Style */
+        .btn-prime {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #0d0221;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(13, 2, 33, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                z-index: 999;
+                padding: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links.active li {
+                animation: slideIn 0.5s forwards;
+            }
+
+            .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+            .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+            .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+            .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+            .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+            .nav-links li:nth-child(7) { animation-delay: 0.7s; }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-radius: 12px;
+                transition: all 0.3s;
+            }
+
+            .nav-links a:hover {
+                background: rgba(0, 255, 255, 0.1);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            }
+
+            .btn-prime {
+                padding: 1rem 2.5rem;
+                font-size: 1.3rem;
+            }
+
+            nav .btn-primary {
+                display: none;
+            }
+
+            /* Close Button */
+            .close-menu {
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                background: none;
+                border: none;
+                color: #ff007f;
+                font-size: 2.5rem;
+                cursor: pointer;
+                transition: all 0.3s;
+                display: none;
+            }
+
+            .nav-links.active .close-menu {
+                display: block;
+            }
+
+            .close-menu:hover {
+                color: #00ffff;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav>
         <div class="logo">⚡ GX Bot</div>
-        <ul class="nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="features.html">الميزات</a></li>
-            <li><a href="commands.html">الأوامر</a></li>
-            <li><a href="premium.html">Premium</a></li>
-            <li><a href="support.html">الدعم</a></li>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navMenu">
+            <!-- Close Button for Mobile -->
+            <button class="close-menu" onclick="toggleMenu()" aria-label="Close">✕</button>
+            
+            <li><a href="index.html" onclick="closeMenu()">الرئيسية</a></li>
+            <li><a href="features.html" onclick="closeMenu()">الميزات</a></li>
+            <li><a href="commands.html" onclick="closeMenu()">الأوامر</a></li>
+            <li><a href="premium.html" onclick="closeMenu()">Premium</a></li>
+            <li><a href="support.html" onclick="closeMenu()">الدعم</a></li>
+            <li><a href="terms.html" onclick="closeMenu()">الشروط والاحكام</a></li>
+            <!--<li><a href="premium.html" class="btn-prime" onclick="closeMenu()">Prime</a></li>-->
         </ul>
-        <a href="#" class="btn-primary">أضف للديسكورد</a>
+        
+        <a href="https://discord.gg/g43V2Q62KP" class="btn-primary">أضف للديسكورد</a>
     </nav>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close Menu
+        function closeMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
 
     <!-- Features Section -->
     <section class="features">
@@ -72,18 +260,37 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="features.html">الميزات</a>
-            <a href="commands.html">الأوامر</a>
-            <a href="premium.html">Premium</a>
-            <a href="support.html">الدعم</a>
-            <a href="#">الشروط والأحكام</a>
-            <a href="#">سياسة الخصوصية</a>
-        </div>
-        <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
-    </footer>
+    <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="features.html">الميزات</a>
+        <a href="commands.html">الأوامر</a>
+        <a href="premium.html">Premium</a>
+        <a href="support.html">الدعم</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+    </div>
+    <p style="color: #72767d; margin-top: 1rem;">© 2025 GX Bot. جميع الحقوق محفوظة.</p>
+</footer>
+<script>
+    // Toggle Menu
+    function toggleMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.toggle('active');
+        
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Close Menu
+    function closeMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 </body>
 </html>
