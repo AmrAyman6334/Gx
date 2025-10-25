@@ -7,7 +7,7 @@
     <div class="stats-container">
         <div class="page-header">
             <h1>📊 إحصائيات GX Bot</h1>
-            <p style="color: #b9bbbe;">بيانات مباشرة من ملف data.json (اختبار)</p>
+            <p style="color: #b9bbbe;">بيانات مباشرة من ملف <b>data.json</b></p>
             <div id="connection-status" class="status-indicator offline">
                 <span class="status-dot"></span>
                 <span>جاري تحميل البيانات...</span>
@@ -58,36 +58,51 @@
 async function loadStats() {
     const statusEl = document.getElementById('connection-status');
     try {
-        // 🟢 جلب البيانات من ملف محلي data.json
+        // 🟢 جلب البيانات من ملف محلي
         const res = await fetch("data.json");
-        const stats = await res.json();
+        const data = await res.json();
 
-        // ✅ حالة الاتصال
+        const users = data.global_users || {};
+        const allUsers = Object.values(users);
+
+        if (allUsers.length === 0) throw new Error("لا يوجد مستخدمين في الملف");
+
+        // 📊 حساب الإحصائيات من الملف مباشرة
+        const total_users = allUsers.length;
+        const total_kento = allUsers.reduce((sum, u) => sum + (u.kento || 0), 0);
+        const total_deposit = allUsers.reduce((sum, u) => sum + (u.deposit || 0), 0);
+        const total_currency = total_kento + total_deposit;
+        const total_xp = allUsers.reduce((sum, u) => sum + (u.xp || 0), 0);
+        const avg_currency = Math.round(total_currency / total_users);
+        const max_level = Math.max(...allUsers.map(u => u.level || 0));
+        const total_guilds = 1; // يمكن تعديلها لاحقاً من ملف آخر لو موجود
+
+        // ✅ تحديث الحالة
         statusEl.className = 'status-indicator online';
         statusEl.innerHTML = '<span class="status-dot"></span><span>🟢 تم تحميل البيانات من data.json</span>';
 
         const cards = document.querySelectorAll(".stat-card");
+        cards[0].querySelector(".stat-value").textContent = total_users.toLocaleString();
+        cards[1].querySelector(".stat-value").textContent = total_currency.toLocaleString();
+        cards[2].querySelector(".stat-value").textContent = total_deposit.toLocaleString();
+        cards[3].querySelector(".stat-value").textContent = total_kento.toLocaleString();
+        cards[4].querySelector(".stat-value").textContent = avg_currency.toLocaleString();
+        cards[5].querySelector(".stat-value").textContent = total_guilds.toLocaleString();
+        cards[6].querySelector(".stat-value").textContent = total_xp.toLocaleString();
+        cards[7].querySelector(".stat-value").textContent = max_level.toLocaleString();
 
-        // ✅ عرض القيم
-        cards[0].querySelector(".stat-value").textContent = (stats.total_users || 0).toLocaleString();
-        cards[1].querySelector(".stat-value").textContent = (stats.total_currency || 0).toLocaleString();
-        cards[2].querySelector(".stat-value").textContent = (stats.total_deposit || 0).toLocaleString();
-        cards[3].querySelector(".stat-value").textContent = (stats.total_kento || 0).toLocaleString();
-        cards[4].querySelector(".stat-value").textContent = (stats.avg_currency || 0).toLocaleString();
-        cards[5].querySelector(".stat-value").textContent = (stats.total_guilds || 0).toLocaleString();
-        cards[6].querySelector(".stat-value").textContent = (stats.total_xp || 0).toLocaleString();
-        cards[7].querySelector(".stat-value").textContent = stats.max_level || "—";
+        // 🕒 عرض وقت آخر تحديث
+        document.querySelector(".last-update").textContent = 
+            "📅 آخر تحديث: " + new Date().toLocaleString("ar-EG");
 
-        // ✅ تحديث وقت آخر تحديث
-        document.querySelector(".last-update").textContent = "📅 آخر تحديث: " + (stats.last_update || "غير معروف");
     } catch (err) {
-        console.error("⚠️ فشل جلب البيانات:", err);
+        console.error("⚠️ خطأ:", err);
         statusEl.className = 'status-indicator offline';
-        statusEl.innerHTML = '<span class="status-dot"></span><span>⚠️ فشل قراءة ملف data.json</span>';
+        statusEl.innerHTML = '<span class="status-dot"></span><span>⚠️ فشل تحميل data.json</span>';
     }
 }
 
-// 🕒 تحميل البيانات أول مرة وتحديثها كل دقيقة
+// ⏱️ تحديث تلقائي
 loadStats();
 setInterval(loadStats, 60000);
 </script>
