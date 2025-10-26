@@ -209,7 +209,7 @@
     </script>
 
     <!-- Commands Container -->
-    <div class="commands-container">
+    <div class="commands-container" dir="ltr">
         <h2 class="section-title">أوامر البوت 📝</h2>
         
         <div class="commands-category">
@@ -232,18 +232,18 @@
                 </div>
                 <div class="command-card">
                     <div class="command-name">/verify</div>
-                    <div class="command-desc">قدّم طلب توثيق حسابك في البوت .</div>
+                    <div class="command-desc">تقديم طلب توثيق حسابك في البوت.</div>
                     <div class="command-usage">/verify</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/bot</div>
+                    <div class="command-name">/invites_bot</div>
                     <div class="command-desc">معلومات وروابط البوت.</div>
-                    <div class="command-usage">/bot</div>
+                    <div class="command-usage">/invites_bot</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name">/gxhup</div>
-                    <div class="command-desc"> الشبكة العالميه عبر السيرفرات .</div>
-                    <div class="command-usage">/gxhup</div>
+                    <div class="command-name">/facebook</div>
+                    <div class="command-desc">الشبكة العالمية عبر السيرفرات.</div>
+                    <div class="command-usage">/facebook</div>
                 </div>
                 <div class="command-card">
                     <div class="command-name">/owner_bot</div>
@@ -315,7 +315,7 @@
                     <div class="command-desc">إزالة رتبة من الجميع.</div>
                     <div class="command-usage">/remove_role [role]</div>
                   </div>
-
+            </div>
         </div>
         <div class="commands-category">
             <h3 class="category-title">🔐 التحكم في الرومات</h3>
@@ -362,7 +362,7 @@
                     </div>
             </div>
         </div>
-        <div class="commands-category">
+        <div class="commands-category" >
             <h3 class="category-title">⚙️ إعدادات متقدمة</h3>
             <div class="commands-grid">
                 
@@ -370,80 +370,116 @@
                 <div class="command-card">
                 <div class="command-name">/registration_panel</div>
                 <div class="command-desc">لوحة تسجيل الإدارة</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/registration_panel [title] [description] [image_url]</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/general_reply</div>
                 <div class="command-desc">إعداد الرد التلقائي في روم محدد</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/general_reply [channel] [status] [optinal: text]</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/setup_welcome</div>
                 <div class="command-desc">تفعيل نظام الترحيب بالمنضمين</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/setup_welcome [toggle] [channel] [role] [message_welcome] etc...</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/setup_suggestions</div>
                 <div class="command-desc">تعيين روم خاص للاقتراحات</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/setup_suggestions</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/suggest</div>
                 <div class="command-desc">إرسال اقتراح إلى روم الاقتراحات</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/suggest</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/aliases</div>
                 <div class="command-desc">تعيين اختصار للأوامر</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/aliases</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/show_aliases</div>
                 <div class="command-desc">عرض جميع الاختصارات</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/show_aliases</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/auto_reply</div>
                 <div class="command-desc">إضافة رد تلقائي مخصص</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/auto_reply</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/ticket_points</div>
                 <div class="command-desc">عرض نقاط تجميع التذاكر</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/ticket_points</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/setup_teckit</div>
                 <div class="command-desc">إعداد وإرسال رسالة التذاكر</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/setup_teckit</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/auto_reply_remove</div>
                 <div class="command-desc">حذف رد تلقائي مضاف مسبقًا</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/auto_reply_remove</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/list_replys</div>
+                <div class="command-desc">قائمة الردود التلقائية المفعلة</div>
+                <div class="command-usage">/list_replys</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/remove_aliases</div>
+                <div class="command-desc">حذف اختصار مخصص</div>
+                <div class="command-usage">/remove_aliases</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/ticket_feedback</div>
+                <div class="command-desc">تقييمات التذاكر المجمعَة</div>
+                <div class="command-usage">/ticket_feedback</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/setup_ratings</div>
+                <div class="command-desc">تفعيل/تعطيل نظام التقييم</div>
+                <div class="command-usage">/setup_ratings</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/setup_roles</div>
+                <div class="command-desc">إرسال إيمبد أخذ أو إزالة الرولات</div>
+                <div class="command-usage">/setup_roles</div>
                 </div>
 
                 <!-- برايم -->
                 <div class="command-card">
                 <div class="command-name">/log</div>
                 <div class="command-desc">🔹 (برايم) تفعيل نظام اللوج لمتابعة الأحداث</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/log</div>
                 </div>
 
                 <div class="command-card">
                 <div class="command-name">/remove</div>
                 <div class="command-desc">🔹 (برايم) حذف جميع الرومات والرولات من السيرفر</div>
-                <div class="command-usage"></div>
+                <div class="command-usage">/remove</div>
+                </div>
+
+                <div class="command-card">
+                <div class="command-name">/remove_one</div>
+                <div class="command-desc">حذف روم أو رول واحد</div>
+                <div class="command-usage">/remove_one</div>
                 </div>
 
                 <div class="command-card">
@@ -472,82 +508,162 @@
             </div>
         </div>
         <div class="commands-category">
-            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <h3 class="category-title">💰 الاقتصاد</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/K</div>
+                    <div class="command-desc">تحويل الكينتوس بين الأعضاء.</div>
+                    <div class="command-usage">/K [username] [amount]</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/رصيد</div>
+                    <div class="command-desc">عرض رصيدك أو رصيد عضو آخر.</div>
+                    <div class="command-usage">/رصيد [username]</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/minecoins</div>
+                    <div class="command-desc">تعدين الكينتوس كل ساعة.</div>
+                    <div class="command-usage">/minecoins</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/P</div>
+                    <div class="command-desc">عرض ملفك الشخصي.</div>
+                    <div class="command-usage">/P</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/B</div>
+                    <div class="command-desc">عرض الخلفيات المتاحة.</div>
+                    <div class="command-usage">/B</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/توب</div>
+                    <div class="command-desc">عرض أغنى 10 أعضاء.</div>
+                    <div class="command-usage">/توب</div>
                 </div>
             </div>
         </div>
         <div class="commands-category">
-            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <h3 class="category-title">🌀 أوامر إضافية</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/gx_wheel</div>
+                    <div class="command-desc">عجلة الحظ GX.</div>
+                    <div class="command-usage">/gx_wheel</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/gx_wheel_channel</div>
+                    <div class="command-desc">تحديد قنوات العجلة.</div>
+                    <div class="command-usage">/gx_wheel_channel</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/opinion</div>
+                    <div class="command-desc">حكم أو وصف عشوائي.</div>
+                    <div class="command-usage">/opinion</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/avatar_member</div>
+                    <div class="command-desc">عرض صورة عضو.</div>
+                    <div class="command-usage">/avatar_member [username]</div>
                 </div>
             </div>
         </div>
         <div class="commands-category">
-            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <h3 class="category-title">🎮 التسلية والألعاب</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/bank</div>
+                    <div class="command-desc">عرض بطاقة البنك.</div>
+                    <div class="command-usage">/bank</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/profile</div>
+                    <div class="command-desc">عرض ملفك أو ملف عضو آخر.</div>
+                    <div class="command-usage">/profile [username]</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/top_kentos</div>
+                    <div class="command-desc">عرض قائمة الأغنياء بالكينتو.</div>
+                    <div class="command-usage">/top_kentos</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/create_coupon</div>
+                    <div class="command-desc">إنشاء كوبون من رصيدك.</div>
+                    <div class="command-usage">/create_coupon [amount]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/use_coupon</div>
+                    <div class="command-desc">استخدام كوبون كنتو.</div>
+                    <div class="command-usage">/use_coupon [code]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/trust</div>
+                    <div class="command-desc">منح TRUST كل 24 ساعة.</div>
+                    <div class="command-usage">/trust</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/background</div>
+                    <div class="command-desc">تصفح الخلفيات.</div>
+                    <div class="command-usage">/background</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/top_servers</div>
+                    <div class="command-desc">عرض توب سيرفرات.</div>
+                    <div class="command-usage">/top_servers</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/top_tasks</div>
+                    <div class="command-desc">عرض توب مهام.</div>
+                    <div class="command-usage">/top_tasks</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/mine</div>
+                    <div class="command-desc">ابدأ التعدين وجمع Kentos كل ساعة.</div>
+                    <div class="command-usage">/mine</div>
                 </div>
             </div>
         </div>
         <div class="commands-category">
-            <h3 class="category-title">📋 الأوامر العامة</h3>
+            <h3 class="category-title">⌨️ الاختصارات</h3>
             <div class="commands-grid">
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/adhkar</div>
+                    <div class="command-desc">تشغيل الأذكار.</div>
+                    <div class="command-usage">/adhkar</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/stop_adhkar</div>
+                    <div class="command-desc">إيقاف الأذكار.</div>
+                    <div class="command-usage">/stop_adhkar</div>
                 </div>
                 <div class="command-card">
-                    <div class="command-name"></div>
-                    <div class="command-desc"></div>
-                    <div class="command-usage"></div>
+                    <div class="command-name">/used_for</div>
+                    <div class="command-desc">عرض عدد مستخدمي البوت.</div>
+                    <div class="command-usage">/used_for</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/embed</div>
+                    <div class="command-desc">إرسال رسالة بإيمبد.</div>
+                    <div class="command-usage">/embed</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/room_emojis</div>
+                    <div class="command-desc">تعيين روم تحويل الصور لإيموجي.</div>
+                    <div class="command-usage">/room_emojis [room]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/stop_room_emoji</div>
+                    <div class="command-desc">إيقاف تحويل الصور لإيموجي.</div>
+                    <div class="command-usage">/stop_room_emoji</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/auto_reply_emoji</div>
+                    <div class="command-desc">تفعيل ردود الإيموجي في روم محدد.</div>
+                    <div class="command-usage">/auto_reply_emoji [room]</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/stopped_reply_emoji</div>
+                    <div class="command-desc">إيقاف ردود الإيموجي.</div>
+                    <div class="command-usage">/stopped_reply_emoji</div>
                 </div>
             </div>
         </div>
